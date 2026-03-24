@@ -1,0 +1,100 @@
+.navbar_Container{
+  z-index: 1;
+  position: fixed;
+  width: 100vw;
+}
+.custom_navbar {
+  width: 90%;
+  max-width: 1100px;
+  background-color: white;
+  border-radius: 50px;
+  height: 70px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Center logo perfectly */
+.center_side {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Button */
+.demo_btn {
+  background-color: #4CAF50;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 25px;
+  color: white;
+}
+
+/* Mobile menu button */
+.menu_btn {
+  font-size: 22px;
+  background: none;
+  border: none;
+}
+
+/* Mobile dropdown */
+.mobile_menu {
+  width: 90%;
+  max-width: 1100px;
+  background-color: white;
+  position: absolute;
+  top: 60px;
+  max-width: 1100px;
+  background: white;
+  margin-top: 10px;
+  padding: 15px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.menu_btn {
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+/* Lines */
+.line {
+  height: 3px;
+  width: 100%;
+  background-color: black;
+  border-radius: 5px;
+  transition: all 0.5s ease;
+}
+
+/* Animation when active (open) */
+.line1.active {
+  transform: rotate(-52deg) translate(1px, 4px);
+}
+
+.line2.active {
+  opacity: 0;
+}
+
+.line3.active {
+  transform: rotate(50deg) translate(-11px, -15px);
+}
+@media(max-width:769px) {
+  .custom_navbar {
+    width: 100%;
+     border-radius: 0px;
+
+  }
+
+  .mobile_menu {
+    width: 100%;
+  border-radius:0 0 40px 40px;
+
+  }
+
+}

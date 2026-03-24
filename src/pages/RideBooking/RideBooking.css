@@ -1,0 +1,159 @@
+.RideBooking {
+    padding-top: 90px;
+    width: 100vw;
+}
+
+.RideBooking form .btn_box {
+    width: 100%;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+}
+
+.btn_box:first-child {
+    width: 100%;
+}
+
+.react-datepicker {
+    background-color: #1e293b;
+    /* dark background */
+    border-radius: 10px;
+    border: none;
+    opacity: 1;
+    z-index: 100;
+    position: relative;
+    top: 5px;
+    left: 50px;
+    /* width: 100vw; */
+}
+
+/* Header (month + year) */
+.react-datepicker__header {
+    background-color: #5371b8;
+    color: white;
+    border-bottom: none;
+}
+
+/* Day names (Mon, Tue...) */
+.react-datepicker__day-name {
+    color: #94a3b8;
+}
+
+/* Normal days */
+.react-datepicker__day {
+    color: white;
+}
+
+/* Selected day */
+.react-datepicker__day--selected {
+    background-color: #3b82f6 !important;
+    color: white;
+    border-radius: 50%;
+}
+
+/* Today */
+.react-datepicker__day--today {
+    /* border: 1px solid #945207; */
+    color: white;
+    background-color: #22c55e;
+    /* green */
+    font-style: italic;
+}
+
+/* Hover effect */
+/* .react-datepicker__day:hover {
+    background-color: #2563eb;
+    border-radius: 50%;
+} */
+
+.react-datepicker__input-container input {
+    display: none;
+}
+
+.react-datepicker__day--disabled {
+    pointer-events: unset;
+    /* allow hover */
+    cursor: no-drop !important;
+    /* visibility: collapse; */
+    opacity: .1;
+    /* cursor: ; */
+
+}
+
+.react-datepicker__day--disabled:hover {
+    background-color: rgb(129, 127, 127, .1) !important;
+    border: none !important;
+    border-radius: 0%;
+}
+
+.react-datepicker__day:hover {
+    background-color: rgb(255, 255, 255, .5) !important;
+    color: white;
+    /* border:  1px solid salmon; */
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: none !important;
+}
+
+.timeslot .react-datepicker {
+    position: relative;
+    top: 5px;
+}
+
+.react-datepicker__time-container {
+    background-color: #010613 !important;
+    border-left: 1px solid #042655 !important;
+}
+
+.react-datepicker__time-list {
+    background-color: #0f172a !important;
+    color: rgb(189, 145, 57);
+    opacity: 1;
+
+}
+
+.react-datepicker__time-list-item:hover {
+    background-color: #3f4347 !important;
+    color: rgb(243, 236, 236);
+    font-style: italic;
+}
+
+.react-datepicker__time-list-item--selected {
+    font-style: italic;
+}
+
+.react-datepicker__time-list-item_header {
+    font-style: italic;
+    background-color: #22c55e !important;
+    font-weight: 600;
+    text-align: center;
+    color: #555 !important;
+    padding: 8px 0;
+    opacity: 1;
+
+}
+
+.react-datepicker__time-list-item--disabled {
+    color: #042655 !important;
+    display: none;
+}
+
+.RideBooking .dateTime {
+    height:40px;
+    /* background-color: #010613; */
+    width: 150px;
+}
+.RideBooking select, option{
+    width: 200px;
+    height: 35px;
+    text-transform: capitalize;
+}
+option,select{
+    cursor: pointer;
+}
+.RideBooking #std .default{
+    color:rgba(226, 24, 24, 0.5) !important;
+    cursor: not-allowed;
+    display: none;
+    font-style: italic;
+}
