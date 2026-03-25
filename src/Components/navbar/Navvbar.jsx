@@ -20,7 +20,7 @@ const Navvbar = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
   return (
-    <div className='navbar_Container d-flex justify-content-center mt-3'>
+    <div className='navbar_Container d-flex justify-content-center mt-2'>
 
       <div className='custom_navbar d-flex align-items-center justify-content-between px-4'>
 

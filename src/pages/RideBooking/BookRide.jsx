@@ -115,7 +115,7 @@ const navigate=useNavigate()
                             errors={errors}
                             rules={{ required: "drop-off Location is required" }}
                         />
-                        <div className="nearestStand mb-2">
+                        <div className="nearestStand mb-2 d-flex flex-column">
                             <label htmlFor="std" className=' text-white'>Nearest Auto Stand</label>
                             <select id='std'>
                                 <option className='default ' >Select Stand</option>

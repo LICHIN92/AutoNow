@@ -14,6 +14,7 @@ import RideBooking from './pages/RideBooking/RideBooking.jsx';
 import BookRide from './pages/RideBooking/BookRide.jsx';
 import { Provider } from 'react-redux';
 import store from './redux/store.js';
+import Driver from './pages/driver/Driver.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/signin',
         element: <SignINUP />
+      },
+      {
+        path:'/driverLogin',
+        element:<Driver/>
       }
     ]
   }
