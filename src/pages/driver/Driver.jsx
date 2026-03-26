@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import Buttunn from '../../Components/Button/Buttunn'
 import './diver.css'
 import axios from 'axios'
-import driver from '../../assets/image/ChatGPT Image Mar 25, 2026, 11_37_13 AM.png'
+// import driver from '../../assets/image/ChatGPT Image Mar 25, 2026, 11_37_13 AM.png'
 const Driver = () => {
     const api_Url = import.meta.env.VITE_API_URL
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
@@ -53,32 +53,35 @@ const Driver = () => {
                 <div className={login ? "formLogin" : "formDiv"}>
                     <form onSubmit={handleSubmit(login ? LoginSubmit : registerSubmit)} >
                         <h2 className=' text-center'>Driver {login ? 'Login' : 'Registration'}</h2>
-                        {!login ? <>
-                            <Input name={'Name'} label={'Name'} rules={{ required: 'Name is required' }}
-                                type={'text'} register={register} />
-                            <Input name={'Mobile'} label={'Mobile'} rules={{ required: 'Moile is required' }}
-                                type={'text'} register={register} />
-                            <Input name={'vehicleNumber'} rules={{ required: 'Vehicle is required' }}
-                                label={'Vehicle Number'}
-                                type={'text'} register={register} />
-                                <Input name={'licenceNumber'} rules={{ required: 'Licence Number is required' }}
-                                label={'Licence Number'}
-                                type={'text'} register={register} />
-                            <Input name={'vehicleType'} label={'Vehicle Type'} rules={{ required: 'Vehicle Number is required' }}
-                                type={'text'} register={register} />
-                            <Input label={"Password"} type={'Password'} rules={{ required: 'Password is required' }}
-                                name={'password'} register={register} />
-                            <Input label={'Confirm Password'} type={'password'} y rules={{ required: 'confirm Password is required' }}
-                                name={'confirmPassword'} register={register} />
-                        </>
-                            :
-                            <>
-                                <Input name={'vehicleNumber'}
-                                    label={'Vehicle Number'}
-                                    type={'text'} register={register} />
-                                <Input label={"Password"} name={'password'}
-                                    register={register} />
-                            </>}
+                        {
+                            !login ?
+                                <>
+                                    <Input name={'Name'} label={'Name'} rules={{ required: 'Name is required' }}
+                                        type={'text'} register={register} />
+                                    <Input name={'Mobile'} label={'Mobile'} rules={{ required: 'Moile is required' }}
+                                        type={'text'} register={register} />
+                                    <Input name={'vehicleNumber'} rules={{ required: 'Vehicle is required' }}
+                                        label={'Vehicle Number'}
+                                        type={'text'} register={register} />
+                                    <Input name={'licenceNumber'} rules={{ required: 'Licence Number is required' }}
+                                        label={'Licence Number'}
+                                        type={'text'} register={register} />
+                                    <Input name={'vehicleType'} label={'Vehicle Type'} rules={{ required: 'Vehicle Number is required' }}
+                                        type={'text'} register={register} />
+                                    <Input label={"Password"} type={'Password'} rules={{ required: 'Password is required' }}
+                                        name={'password'} register={register} />
+                                    <Input label={'Confirm Password'} type={'password'} y rules={{ required: 'confirm Password is required' }}
+                                        name={'confirmPassword'} register={register} />
+                                </>
+                                :
+                                <>
+                                    <Input name={'vehicleNumber'}
+                                        label={'Vehicle Number'}
+                                        type={'text'} register={register} />
+                                    <Input label={"Password"} name={'password'}
+                                        register={register} />
+                                </>
+                        }
                         <div className="d-flex justify-content-center">
                             <Buttunn value={login ? 'Login' : 'register'} type={'submit'} />
 
