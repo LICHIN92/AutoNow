@@ -3,8 +3,8 @@
     margin: 0;
     box-sizing: border-box;
     max-width: 100wv !important;
-    height: 100vh;
-    padding-top: 80px !important;
+    /* height: 100vh; */
+    padding-top: 70px !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,8 +12,42 @@
     padding-top: 5px;
 }
 
+.register_login {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row !important;
+    padding-left: 50px;
+    gap: 40px;
+}
+
+.register_login div {
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: white;
+   
+}
+.register_login div:hover{
+     cursor: pointer;
+    transform: scale(1.1);
+    transition: all 0.6s ease;
+}
+.register_login .reg {
+    width: 100px;
+    background-color: rgb(95, 41, 1) !important;
+}
+
+.register_login .logg {
+    width: 100px;
+    background-color: olive;
+}
+
 .driver .form_container {
-    
+
     width: 100%;
     min-height: 500px;
     padding-inline: 5px;
@@ -25,26 +59,41 @@
 
 .driver .formDiv {
     width: 50%;
-    min-height: 500px;
+    min-height: 550px;
     display: flex;
     justify-content: center;
-    padding-block: 1px;
+    align-items: center;
+    padding-block: 5px;
     border: 1px solid white;
     border-radius: 39px;
     background-color: rgb(63, 63, 146);
 }
 
-.driver .formDiv form {
+.driver .formLogin {
+    width: 50%;
+    min-height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 5px;
+    border: 1px solid white;
+    border-radius: 39px;
+    background-color: rgb(63, 63, 146);
+}
+
+.driver .formDiv form,.driver .formLogin form {
     width: 300px;
-    padding: 5px;
+    /* padding: 5px; */
+    height: fit-content;
+    /* display: flex;
+    flex-direction: ; */
 }
 
 .form_container .imageBox {
-    
     width: 50%;
     height: 100%;
     justify-content: start;
-    background-color: aqua ;
+    background-color: aqua;
 }
 
 .imag image {
@@ -52,24 +101,27 @@
     width: 200px;
 }
 
-@media(max-width:1100px){
-    .driver .form_container{
-        padding-top: 70px;
+@media(max-width:1100px) {
+    .driver .form_container {
+        /* padding-top: 70px; */
     }
 }
+
 @media(max-width:900px) {
     .driver .form_container {
-        padding-top: 70px;
+        /* padding-top: 70px; */
     }
 }
+
 @media(max-width:900px) {
-    .driver .formDiv{
+    .driver .formDiv,.driver .formLogin {
         width: 90%;
         /* mm */
     }
 }
+
 @media(max-width:360px) {
-    .driver .formDiv{
+    .driver .formDiv,.driver .formLogin  {
         width: 95%;
     }
 }
