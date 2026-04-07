@@ -1,0 +1,21 @@
+.Driverdetail {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(3, 78, 3, 0.5);
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.detail_Box{
+    width: 400px;
+    min-height: 500px;
+    background-color: rgb(81, 104, 43);
+}
+.detail_Box img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}

@@ -4,11 +4,17 @@ import { useForm } from 'react-hook-form'
 import Buttunn from '../../Components/Button/Buttunn'
 import './diver.css'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import driveRedux from '../../redux/driverReduxfun'
+import { useDispatch } from 'react-redux'
 // import driver from '../../assets/image/ChatGPT Image Mar 25, 2026, 11_37_13 AM.png'
 const Driver = () => {
     const api_Url = import.meta.env.VITE_API_URL
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
     const [login, setlogin] = useState(false)
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
     const registerSubmit = async (data) => {
         try {
             const res = await axios.post(`${api_Url}/driver`, data)
@@ -24,14 +30,16 @@ const Driver = () => {
         reset()
     }
     const LoginSubmit = async (data) => {
-        alert('login')
         try {
             const res = await axios.post(`${api_Url}/driver/login`, data)
             console.log(res.data);
-
+            alert(res.data.message)
+            localStorage.setItem('driver', res.data.token)
+            driveRedux(res.data.token, dispatch)
+            navigate('/driverHome')
         } catch (error) {
             console.log(error.response.data);
-
+            alert(error.response.data)
         }
     }
     return (
@@ -70,15 +78,15 @@ const Driver = () => {
                                         type={'text'} register={register} />
                                     <Input label={"Password"} type={'Password'} rules={{ required: 'Password is required' }}
                                         name={'password'} register={register} />
-                                    <Input label={'Confirm Password'} type={'password'} y rules={{ required: 'confirm Password is required' }}
+                                    <Input label={'Confirm Password'} type={'password'} rules={{ required: 'confirm Password is required' }}
                                         name={'confirmPassword'} register={register} />
                                 </>
                                 :
                                 <>
                                     <Input name={'vehicleNumber'}
-                                        label={'Vehicle Number'}
+                                        label={'Vehicle Number'} rules={{ required: 'enter vehicle number' }}
                                         type={'text'} register={register} />
-                                    <Input label={"Password"} name={'password'}
+                                    <Input label={"Password"} name={'password'} type={'password'} rules={{ required: 'enter your password' }}
                                         register={register} />
                                 </>
                         }

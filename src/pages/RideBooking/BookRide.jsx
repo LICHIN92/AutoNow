@@ -19,8 +19,9 @@ const BookRide = () => {
     const api_url = import.meta.env.VITE_API_URL
     const user = useSelector((state) => state.user.user)
     const [stands, setStands] = useState([])
+    const [selectedStand, setSelectedStand] = useState("");
     console.log(user);
-const navigate=useNavigate()
+    const navigate = useNavigate()
     const Opencalender = () => {
         dateRef.current?.setOpen(true);
     };
@@ -69,7 +70,7 @@ const navigate=useNavigate()
     };
 
     const RideBook = async (data) => {
-        const token = localStorage.getItem('autNowToken')
+        const token = localStorage.getItem('autoNowToken')
         if (!token) {
             return navigate('/signin')
         }
@@ -89,7 +90,8 @@ const navigate=useNavigate()
             : '';
         data.date = formattedDate,
             data.time = formattedTime,
-            data.userId = user.id
+            data.userId = user.id,
+            data.nearStand=selectedStand
         try {
             const res = await axios.post(`${api_url}/ride`, data)
         } catch (error) {
@@ -117,7 +119,10 @@ const navigate=useNavigate()
                         />
                         <div className="nearestStand mb-2 d-flex flex-column">
                             <label htmlFor="std" className=' text-white'>Nearest Auto Stand</label>
-                            <select id='std'>
+                            <select id='std'
+                                value={selectedStand}
+                                onChange={(e) => setSelectedStand(e.target.value)}
+                            >
                                 <option className='default ' >Select Stand</option>
                                 {stands.map((stand, index) => (
                                     <option key={index} value={stand.StandName}>
@@ -192,7 +197,7 @@ const navigate=useNavigate()
                         </div>
                     </form>
                 </div>
-                <div className=' col-lg-6'>
+                <div className='mapdiv col-lg-6'>
                     <Map />
 
                 </div>

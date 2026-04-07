@@ -1,0 +1,31 @@
+.ViewDriver{
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 110px;
+    /* background-color: aqua; */
+}
+/* .ViewDriver table{
+    width: 100%;
+} */
+table {
+  width: 90%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  text-align: center;
+}
+b{
+    color: black;
+}
+
+@media(max-width:700px){
+    table{
+        width: 99%;
+    }
+}

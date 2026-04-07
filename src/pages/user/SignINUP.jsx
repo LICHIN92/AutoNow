@@ -9,7 +9,7 @@ const SignINUP = () => {
         <div className='SignINUP '>
             {
                 signUp ?
-                    <Signin />
+                    <Signin fun={setSignUP} />
                     :
                     <SignUp />
             }

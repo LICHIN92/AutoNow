@@ -84,7 +84,10 @@
 .line3.active {
   transform: rotate(50deg) translate(-11px, -15px);
 }
-@media(max-width:769px) {
+.custom_navbar .items{
+  cursor: pointer;
+}
+@media(max-width:800px) {
   .custom_navbar {
     width: 100%;
      border-radius: 0px;

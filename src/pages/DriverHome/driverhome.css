@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Instrument+Serif:ital@0;1&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Pacifico&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+.driverHome {
+    max-width: 100vw;
+    maxheight: 100vh;
+    /* background-color: salmon; */
+    padding-top: 90px;
+}
+
+.driverHome .head {
+    padding: 15px;
+    height: 24vh !important;
+}
+
+.head h4 {
+    font-family: 'Lobster';
+    margin-top: 3px;
+    font-size: 2rem;
+    text-transform: capitalize;
+}
+.driverImage{
+    border-radius: 50px;
+    height: 80px;
+    width: 80px;
+}
+.head .vNumber{
+
+}
+.vNumber img {
+    width: 35px;
+    height: 50px;
+}
+.sidebar{
+    height: 80vh;
+    
+}
+.sidebar ul{
+    height: 90%;
+}
+.center_bar{
+    background-color: chocolate;
+}
+.Driver_card {
+    width: 160px;
+    height: 80px;
+    background-color: whitesmoke;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 10px 2px rgb(158, 154, 149);
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 2px;
+    flex-wrap: wrap !important;
+    gap: 5px;
+}
+
+.Driver_card:hover {
+    transform: scale(1, 1.05);
+    transition: all 50ms ease;
+}
+
+
+@media(max-width:768px){
+    .sidebar{
+        height: 20vh;
+    }
+    .sidebar ul{
+        width: 100vw;
+        background-color: aqua;
+        height: 0;
+    }
+    .center_bar{
+        height: 100vh;
+    }
+}
+@media(max-width:400px){
+    .center_bar{
+        width: 100vw;
+        height: 500px;
+        background-color: chocolate;
+        flex-wrap: wrap;
+        gap: 0;
+        row-gap: 0;
+        padding-block: 250px;
+        /* height: auto; */
+    }
+}

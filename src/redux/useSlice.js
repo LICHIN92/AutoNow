@@ -1,28 +1,3 @@
-// import { createSlice } from "@reduxjs/toolkit";
-
-// const token = localStorage.getItem('autoNowToken')
-// let User=null
-// const initial_State = {
-//     user: User || {}
-// };
-// export const userSlice = createSlice({
-//     name: 'user',
-//     initialState: initial_State,
-//     reducers: {
-//         setUserData: (state, action) => {
-// state.user=action.payload;
-//         },
-//         cleareUserData: (state) => {
-//             state.user = {},
-//                 localStorage.removeItem('autoNowToken')
-//         }
-//     }
-// })
-
-// export const { setUserData, cleareUserData } = userSlice.actions
-// export default userSlice.reducer;
-
-
 import { createSlice } from "@reduxjs/toolkit";
 import { jwtDecode } from "jwt-decode";
 
@@ -34,6 +9,8 @@ let user = null;
 if (token) {
     try {
         user = jwtDecode(token);
+        console.log(user);
+        
     } catch (error) {
         console.log("Invalid token");
         localStorage.removeItem('autoNowToken');
@@ -41,7 +18,7 @@ if (token) {
 }
 
 const initial_State = {
-    user: user || {}
+    user: user || null
 };
 
 export const userSlice = createSlice({
@@ -51,12 +28,12 @@ export const userSlice = createSlice({
         setUserData: (state, action) => {
             state.user = action.payload;
         },
-        cleareUserData: (state) => {
-            state.user = {}; 
+        clearUserData: (state) => {
+            state.user = null; 
             localStorage.removeItem('autoNowToken');
         }
     }
 });
 
-export const { setUserData, cleareUserData } = userSlice.actions;
+export const { setUserData, clearUserData } = userSlice.actions;
 export default userSlice.reducer;

@@ -15,6 +15,11 @@ import BookRide from './pages/RideBooking/BookRide.jsx';
 import { Provider } from 'react-redux';
 import store from './redux/store.js';
 import Driver from './pages/driver/Driver.jsx';
+import Admin from './pages/admin/Admin.jsx';
+import ViewDriver from './pages/viewDriver/ViewDriver.jsx';
+import DriverHome from './pages/DriverHome/DriverHome.jsx';
+import AddProfile from './Components/addProfile/AddProfile.jsx';
+import UserDash from './pages/userDash/UserDash.jsx';
 
 const router = createBrowserRouter([
   {
@@ -29,8 +34,28 @@ const router = createBrowserRouter([
         element: <SignINUP />
       },
       {
-        path:'/driverLogin',
-        element:<Driver/>
+        path: '/driverLogin',
+        element: <Driver />
+      },
+      {
+        path: '/admin',
+        element: <Admin />
+      },
+      {
+        path: '/viewDriver',
+        element: <ViewDriver/>
+      },
+      {
+        path:'/driverhome',
+        element:<DriverHome/>
+      },
+      {
+        path:'/p',
+        element:<AddProfile/>
+      },
+      {
+        path:'/userDashBoard',
+        element:<UserDash/>
       }
     ]
   }
