@@ -1,8 +1,9 @@
-.navbar_Container{
+.navbar_Container {
   z-index: 1;
   position: fixed;
   width: 100vw;
 }
+
 .custom_navbar {
   width: 90%;
   max-width: 1100px;
@@ -54,6 +55,7 @@
   flex-direction: column;
   gap: 10px;
 }
+
 .menu_btn {
   width: 30px;
   height: 22px;
@@ -84,20 +86,24 @@
 .line3.active {
   transform: rotate(50deg) translate(-11px, -15px);
 }
-.custom_navbar .items{
+
+.custom_navbar .items {
   cursor: pointer;
 }
+
 @media(max-width:800px) {
   .custom_navbar {
     width: 100%;
-     border-radius: 0px;
+    border-radius: 0px;
 
   }
 
   .mobile_menu {
     width: 100%;
-  border-radius:0 0 40px 40px;
-
+    border-radius: 0 0 40px 40px;
+    z-index: 100;
+    position:absolute;
+ /* background-color: #353738; */
   }
 
 }

@@ -44,7 +44,7 @@ const Navvbar = () => {
               Admin
             </div>
             :
-            <div className='items' onClick={()=>navigate('userDashBoard')}>
+            <div className='items' onClick={() => navigate('userDashBoard')}>
               User
             </div>
           }
@@ -87,10 +87,14 @@ const Navvbar = () => {
         <div className='mobile_menu'>
           <div>Products</div>
           <div>Customers</div>
-          <div className='items' onClick={() => navigate('/driverLogin')}>Driver</div>
-          {token &&
-            <div onClick={() => navigate('/admin')} className='items'>
+          <div className='items' onClick={() => { setOpen(!open), navigate('/driverLogin') }}>Driver</div>
+          {token && user.Role ?
+            <div onClick={() => { setOpen(!open), navigate('/admin') }} className='items'>
               Admin
+            </div>
+            :
+            <div className='items' onClick={() => { setOpen(!open), navigate('userDashBoard') }}>
+              User
             </div>
           }
           <button className='demo_btn w-100 mt-2'>See a demo</button>

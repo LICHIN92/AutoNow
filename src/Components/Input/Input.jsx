@@ -3,10 +3,10 @@ import { FloatingLabel, Form } from 'react-bootstrap'
 
 const Input = ({ label, type, name, register, rules, errors,onclick }) => {
     return (
-        <FloatingLabel
+        <FloatingLabel 
             controlId={name}
             label={label}
-            className="mb-3"
+            className="mb-3 z-0"
             onClick={onclick}
         >
             <Form.Control
