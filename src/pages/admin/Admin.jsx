@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Admin.css'
 import axios from 'axios'
 import { MdAddLocationAlt } from "react-icons/md";
@@ -10,8 +10,12 @@ const Admin = () => {
     const [user, setuser] = useState(null)
     const [stations, setStation] = useState(null)
     const [stnd, setstnd] = useState(false)
-    const navigate=useNavigate()
-    
+    const navigate = useNavigate()
+useEffect(()=>{
+      const allfun=async()=>{
+        
+      }
+},[])
     const driver = async () => {
         try {
             const res = await axios.get(`${api_url}/admin/getNumDriver`)
@@ -40,51 +44,59 @@ const Admin = () => {
         }
     }
     return (
-        <div className='admin_container container-fluid row'>
+        <div className='admin_container d-flex flex-column '>
             {stnd && <Stattion close={setstnd} />}
-            <div className='sideBar col-md-2 pt-lg-5  rounded-5'>
-                <ul className='d-flex flex-md-column w-100  h-100 justify-content-evenly p-0 justify-content-center
-                justify-content-md-evenly align-items-center '>
-                    <li className='' onClick={()=>navigate('/viewDriver')}>Drivers</li>
-                    <li className=''>Bookings</li>
-                    <li className=''>Users</li>
+            <h3 className=''>Admin Control</h3>
+            <div className="d-flex flex-column flex-lg-row admin">
+                <div className='sideBar d-flex justify-content-center align-items-center'>
+                    <ul className='d-flex flex-lg-column justify-content-lg-evenly align-items-lg-center
+                    flex-row justify-content-evenly align-items-center'>
+                        <li className='' onClick={() => navigate('/viewDriver')}>Drivers</li>
+                        <li className=''>Bookings</li>
+                        <li className=''>Users</li>
 
-                </ul>
+                    </ul>
+                </div>
+                <div className='main  ps-2'>
+
+                    <div className="cards d-flex justify-content-lg-center pt-3  gap-2 flex-wrap ">
+                        <div className="card" onClick={() => { driver() }}>
+
+                            Reg Drivers
+                            {drivers && <span>{drivers}</span>}
+                        </div>
+                        <div className="card" onClick={() => { users() }}>Users
+                            {user && <span>{user}</span>}
+                        </div>
+                        <div className="card" onClick={() => { station() }}>Stations
+                            {stations && <span>{stations}</span>}
+                        </div>
+                        <div className="card">Revenue</div>
+                    </div>
+                    {/* <div className='mt-3'>
+                        {drivers &&
+                            <p>Registered Drivers: {drivers}</p>
+                        }
+                    </div> */}
+                    {/* <div>
+                        {user &&
+                            <p>User: {user}</p>
+                        }
+                    </div> */}
+                    <div>
+                        {stations &&
+
+                            <div style={{ height: '40px' }} className='d-flex align-items-center gap-2 ps-2' >
+                                <span>Station: {stations}</span>
+                                <div>
+                                    <MdAddLocationAlt fill='blue' size={'25'} cursor={'pointer'} onClick={() => setstnd(true)} />
+
+                                </div>
+                            </div>}
+                    </div>
+                </div>
             </div>
-            <div className='main col-md-10 ps-lg-4 pt-2'>
-                <h3 className='text-center'>Admin Control</h3>
 
-                <div className="cards pt-3 d-flex flex-wrap justify-content-evenly
-                 align-items-center row-gap-4 w-100  ">
-                    <div className="card" onClick={() => { driver() }}>
-
-                        Reg:Drivers</div>
-                    <div className="card" onClick={() => { users() }}>Users</div>
-                    <div className="card" onClick={() => { station() }}>Stations</div>
-                    <div className="card">Revenue</div>
-                </div>
-                <div className='mt-3'>
-                    {drivers &&
-                        <p>Registered Drivers: {drivers}</p>
-                    }
-                </div>
-                <div>
-                    {user &&
-                        <p>User: {user}</p>
-                    }
-                </div>
-                <div>
-                    {stations &&
-
-                        <div style={{ height: '40px' }} className='d-flex align-items-center gap-2 ps-2' >
-                            <span>Station: {stations}</span>
-                            <div>
-                                <MdAddLocationAlt fill='blue' size={'25'} cursor={'pointer'} onClick={() => setstnd(true)} />
-
-                            </div>
-                        </div>}
-                </div>
-            </div>
         </div>
     )
 }

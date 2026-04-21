@@ -19,8 +19,9 @@
 }
 
 .userdash p {
-    text-align: center;
-    /* padding-left: 50px; */
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
     font-size: 2rem;
     text-transform: capitalize;
      font-family: 'Lobster Two';
@@ -35,7 +36,18 @@
     margin-left: 5px;
     padding-left: 4px;
 }
-
+.userdash div .logout{
+   font-family: 'Times New Roman', Times, serif;
+   font-size: medium;
+   color: rgb(170, 10, 10);
+   font-weight: lighter !important;
+}
+.userdash div .logout:hover{
+    background-color: wheat;
+    cursor: pointer;
+    padding: 2px;
+    padding-inline: 3px;
+}
 .userdash .rideContainer {
     width: 100vw;
     /* background-color: blanchedalmond; */
@@ -73,16 +85,17 @@
     --s: 20px;
     /* control the shape */
 
-    line-height: 1.8;
+    line-height: 1;
     /* control the height */
     padding-inline: .3em calc(var(--s) + .3em);
     clip-path: polygon(0 0, calc(100% - var(--s)) 0, 100% 50%, calc(100% - var(--s)) 100%, 0 100%);
     background: #048f7c;
     width: fit-content;
     position: relative;
-    top: 35px;
+    top: 20px;
     left: 3px;
     color: white;
+    height: 30px;
 }
 
 .rideContainer .cancel {

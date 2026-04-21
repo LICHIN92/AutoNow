@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import './usedash.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { TbCurrentLocationFilled } from 'react-icons/tb'
 import { ImLocation2 } from 'react-icons/im'
 import axios from 'axios'
 import ConfirmModal from '../../Components/cofirmModal/ConfirmModal'
+import { FaUserAlt } from 'react-icons/fa'
+import { clearUserData } from '../../redux/useSlice'
+import { useNavigate } from 'react-router-dom'
 const UserDash = () => {
 
     const user = useSelector((state) => state.user?.user)
-    console.log(user);
-    const id = user.id
+    // console.log(user);
+    const id = user?.id
     const api_Url = import.meta.env.VITE_API_URL
     const [ride, setRide] = useState([])
     const [cancel, setCancel] = useState(false)
     const [Id, setId] = useState(null)
+    const dispatch = useDispatch()
+    const navigate=useNavigate()
     useEffect(() => {
         const myride = async () => {
             try {
@@ -25,7 +30,7 @@ const UserDash = () => {
             }
         }
         myride()
-    }, [Id,cancel])
+    }, [Id, cancel])
     const cancelRide = async () => {
         try {
             const res = await axios.delete(`${api_Url}/user/cancel/${Id}`)
@@ -47,6 +52,11 @@ const UserDash = () => {
 
         return `${hours}:${minutes} ${ampm}`;
     };
+    const Logout = async () => {
+        localStorage.removeItem('autoNowToken')
+        dispatch(clearUserData(user))
+navigate('/signin')
+    }
     return (
         <div className='userdash'>
             {cancel &&
@@ -54,10 +64,14 @@ const UserDash = () => {
             }
 
             <div className='userHead w-100'>
-                <p >
+                <p > <FaUserAlt fill='black' className='me-3' />
+
                     hello
                     <span>{user.Name}......!</span>
                 </p>
+                <div>
+                    <span className='logout' onClick={() => { Logout() }}>Log Out</span>
+                </div>
             </div>
             <div className='rideContainer'>
                 {ride.map((data, index) => (
@@ -78,9 +92,9 @@ const UserDash = () => {
                             </span>
                         </div>
 
-                        {data.status == 'accepted' ?
+                        {data.Status == 'accepted' ?
                             <div className='breadcrumb'>
-                                {data.status}
+                                {data.Status}
                             </div> :
                             <div className='cancel'>
                                 <span onClick={() => { setId(data._id), setCancel(true) }}>

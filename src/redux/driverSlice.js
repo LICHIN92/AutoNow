@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { jwtDecode } from "jwt-decode"; // ✅ import this
 
-const token = localStorage.getItem("driver");
+const token = localStorage.getItem("sarathi");
 
 let driver = null;
 
@@ -12,7 +12,7 @@ if (token) {
     console.log(driver)
   } catch (error) {
     console.log("Invalid token");
-    localStorage.removeItem("driver");
+    localStorage.removeItem("sarathi");
   }
 }
 
@@ -26,11 +26,11 @@ export const driverSlice = createSlice({
   reducers: {
     setDriverData: (state, action) => {
       state.driver = action.payload;
-      localStorage.setItem("driver", action.payload.token); // optional
+      // localStorage.setItem("sarathi", action.payload.token); // optional
     },
     clearDriverData: (state) => {
       state.driver = null;
-      localStorage.removeItem("driver");
+      localStorage.removeItem("sarathi");
     },
   },
 });

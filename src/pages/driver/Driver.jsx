@@ -32,9 +32,9 @@ const Driver = () => {
     const LoginSubmit = async (data) => {
         try {
             const res = await axios.post(`${api_Url}/driver/login`, data)
-            console.log(res.data);
+            console.log(res.data.token);
             alert(res.data.message)
-            localStorage.setItem('driver', res.data.token)
+            await localStorage.setItem('sarathi', res.data.token)
             driveRedux(res.data.token, dispatch)
             navigate('/driverHome')
         } catch (error) {

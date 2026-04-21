@@ -1,0 +1,124 @@
+ .ViewAccepted {
+     padding-top: 90px;
+     width: 100vw;
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding-inline: 0px;
+ }
+
+ .ViewAcceptedBox {
+     width: 700px;
+     height: 400px;
+     background-color: rgb(255, 255, 255);
+     display: flex;
+     border-radius: 15px;
+     box-shadow: 1px 1px 15px 2px rgb(12, 12, 12, .1);
+ }
+
+ .ViewAcceptedBox .imgBox {
+     width: 40%;
+     height: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .imgBox img {
+     width: 100%;
+     height: 60%;
+ }
+
+ .ViewAcceptedBox .infoBox {
+     height: 100%;
+     width: 60%;
+     /* background-color: brown; */
+     padding-inline: 20px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     gap: 20px;
+ }
+
+ .under {
+
+     border-bottom: 3px solid #2caf5c;
+     padding-bottom: 2px;
+ }
+
+ .eachInfo {
+     border-bottom: .1rem solid white;
+ }
+.eachInfo span{
+    text-transform: uppercase;
+}
+ .icons {
+     background-color: rgba(121, 85, 85, 0.1);
+     padding: 1px;
+     width: 20px;
+     height: 20px;
+     color: rgb(20, 77, 20);
+ }
+
+ .dd {
+     display: flex;
+     justify-content: start;
+ }
+
+ .finishButton {
+     border: #388B53;
+     background-color: #1B7938;
+     padding-inline: 5px;
+     width: 100%;
+     color: white;
+     height: 30px;
+     border-radius: 10px;
+     margin-top: 15px;
+ }
+
+ @media(max-width:768px) {
+     .ViewAccepted {
+         /* width: 99vw; */
+         padding-top: 160px;
+     }
+
+     .ViewAccepted .ViewAcceptedBox {
+         width: 95vw;
+         height: 100vh !important;
+         padding-block: 0 !important;
+         flex-direction: column;
+         gap: 0px;
+         /* background-color: rgb(8, 121, 83); */
+     }
+
+     .ViewAcceptedBox .imgBox {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         width: 100%;
+         height: 20%;
+         /* background-color: aquamarine; */
+     }
+
+     .imgBox img {
+         width: 300px;
+         height: 100%;
+     }
+
+     .ViewAcceptedBox .infoBox {
+         max-height: 60% !;
+         width: 100%;
+         gap: 0px;
+         justify-content: start;
+         padding-top: 15px !important;
+         /* background-color: rgb(132, 185, 185); */
+     }
+ }
+
+ @media(max-width:579px) {
+     .imgBox img {
+         width: 250px;
+         height: 100%;
+     }
+ }

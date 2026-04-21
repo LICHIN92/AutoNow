@@ -2,54 +2,70 @@
     padding-top: 90px;
     /* background-color: gray; */
     height: 100vh;
+    width: 100vw !important;
     box-sizing: border-box;
     margin: 0;
 }
 
-.sideBar {
-    background-color: rgb(100, 43, 43);
-    color: wheat;
-    box-shadow:  5px 5px 5px 5px rgb(90, 83, 83);
+.admin_container .admin {
+    height: 80vh;
+    width: 100% !important;
+}
 
+.admin .sideBar {
+    /* background-color: burlywood; */
+    width: 20vw;
+    height: 100%;
 }
 
 .sideBar ul {
     list-style: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    background-color: brown;
+    color: wheat;
 }
-
-.sideBar ul li {
-    font-size: 1.06rem;
-cursor: pointer;
+.sideBar ul li{
+    cursor: pointer;
 }
 
 .admin_container .main {
-    /* display: flex;
-    flex-direction: row; */
+    width: 80vw;
+    height: 100%;
 }
-
-.admin_container .main .cards {
-    /* display: flex;
+.card{
+    padding-block: 5px;
+    min-width: 150px;
+    background-color: rgb(48, 100, 24);
+    /* text-align: center; */
+    display: flex;
     flex-direction: row;
-    flex-wrap: wrap; */
-    /* gap: 15px; */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    cursor: pointer;
+    color: white;
 }
-
-.cards .card {
-    width: 180px;
-    height: 100px;
+.card span{
+    background-color: rgb(88, 59, 3);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
     text-align: center;
     display: flex;
-    font-size: 1.05rem;
     justify-content: center;
-    font-family: Arial, Helvetica, sans-serif;
-    cursor: pointer;
-    background-color: wheat;
-    border: none;
-    box-shadow:  3px 2px 2px rgb(2, 180, 2,.5);
+    align-items: center;
+    margin-left: 4px;
 }
+@media(max-width:992px) {
+    .sideBar {
+        width: 100vw !important;
+        height: 20vh !important;
+    }
 
-.cards .card:hover {
-
-    transform: scale(1.1);
-    transition: all 0.3s ease;
+    .admin_container .main {
+        width: 100vw !important;
+        height: 80vh !important;
+    }
 }

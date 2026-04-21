@@ -20,6 +20,11 @@ import ViewDriver from './pages/viewDriver/ViewDriver.jsx';
 import DriverHome from './pages/DriverHome/DriverHome.jsx';
 import AddProfile from './Components/addProfile/AddProfile.jsx';
 import UserDash from './pages/userDash/UserDash.jsx';
+import Userprotection from './Components/AuthProtection/Userprotection.jsx';
+import AdminAuth from './Components/AuthProtection/AdminAuth.jsx';
+import DriverAuth from './Components/AuthProtection/DriverAuth.jsx';
+import DriverProtecttion from './Components/AuthProtection/DriverProtecttion.jsx';
+import ViewAccepted from './pages/ViewAccepted/ViewAccepted.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,31 +36,55 @@ const router = createBrowserRouter([
       },
       {
         path: '/signin',
-        element: <SignINUP />
+        element: (
+          <Userprotection>
+            <SignINUP />
+          </Userprotection>
+        )
       },
       {
         path: '/driverLogin',
-        element: <Driver />
+        element: (
+          <DriverProtecttion>
+            <Driver />
+          </DriverProtecttion>
+        )
       },
       {
         path: '/admin',
-        element: <Admin />
+        element: (
+          <AdminAuth>
+            <Admin />
+          </AdminAuth>
+        )
       },
       {
         path: '/viewDriver',
-        element: <ViewDriver/>
+        element: <ViewDriver />
       },
       {
-        path:'/driverhome',
-        element:<DriverHome/>
+        path: '/driverhome',
+        element: (
+          <DriverAuth>
+            <DriverHome />
+          </DriverAuth>
+        )
       },
       {
-        path:'/p',
-        element:<AddProfile/>
+        path: '/p',
+        element: <AddProfile />
       },
       {
-        path:'/userDashBoard',
-        element:<UserDash/>
+        path: '/userDashBoard',
+        element: (
+          <Userprotection>
+            <UserDash />
+          </Userprotection>
+        )
+      },
+      {
+        path:'/viewAcceptedRide',
+        element:<ViewAccepted/>
       }
     ]
   }
