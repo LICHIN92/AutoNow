@@ -107,7 +107,7 @@
      }
 
      .ViewAcceptedBox .infoBox {
-         max-height: 60% !;
+         max-height: 60% ;
          width: 100%;
          gap: 0px;
          justify-content: start;
