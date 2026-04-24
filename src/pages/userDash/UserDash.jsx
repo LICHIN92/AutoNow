@@ -23,6 +23,7 @@ const UserDash = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     useEffect(() => {
+         if (!id) return;
         const myride = async () => {
             try {
                 const res = await axios.get(`${api_Url}/user/getMyride/${id}`)
