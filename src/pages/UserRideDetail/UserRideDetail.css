@@ -1,0 +1,167 @@
+.UserRideDetail {
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 100px;
+    padding-inline: 10px;
+
+}
+.UserRideDetail p{
+    cursor: pointer;
+}
+.UserRideDetail img {
+    width: 150px;
+    border-radius: 10px;
+}
+
+.RideInfo {
+    height: 300px;
+    /* border: 1px solid black; */
+    width: 50vw;
+    padding-block: 13px;
+    /* background-color: #22c55e; */
+}
+
+.RideInfo .head {
+    font-weight: 660;
+    font-size: 1.5rem;
+}
+
+.tick {
+    background-color: rgb(4, 158, 4, .1);
+    padding-inline: 2px;
+    border-radius: 15px;
+    width: 95px;
+}
+
+.uu {
+    height: 90%;
+    position: relative;
+    padding-left: 30px;
+    padding-block: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* border: 1px solid ; */
+    border-radius: 5px;
+    /* background-color: #c54322; */
+    box-shadow: 1px 1px 3px 1px rgb(87, 79, 79, .2);
+}
+
+.uu::before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 26px;
+    bottom: 119px;
+    border-left: 1px solid #22c55e;
+    /* dotted vertical line */
+}
+
+.pickDrop .pick {
+    width: 10px;
+    background-color: #22c55e;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    left: -19px;
+    top: 11px;
+}
+
+.pickDrop .drop {
+    width: 10px;
+    background-color: #bb0f09;
+    height: 10px;
+    border-radius: 50%;
+    position: relative;
+    left: -19px;
+    top: 19px;
+
+}
+
+.pickDrop {
+    height: 80%;
+}
+
+.timeDateBox {
+    padding-right: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.timeDate {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.driverInfo {
+    width: 50vw;
+    /* background-color: blueviolet; */
+}
+
+.driverInfoBox {
+    width: 90%;
+    height: 95%;
+    box-shadow: 1px 1px 3px 1px rgb(87, 79, 79, .2);
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.driverInfo button {
+    border: none;
+    outline: none;
+    width: 1000%;
+    padding-block: 3px;
+    border-radius: 5px;
+    background-color: #22c55e;
+    color: white;
+}
+.star{
+    color: gold;
+    /* background-color: gold; */
+}
+@media(max-width:992px) {
+
+    .RideInfo,
+    .driverInfo {
+        width: 95vw;
+    }
+
+}
+
+@media(max-width:526px) {
+    .RideInfo {
+        height: 250px;
+        /* border: 1px solid black; */
+        width: 95vw;
+    }
+}
+
+@media(max-width:480px) {
+    .timeDateBox {
+        display: flex;
+        flex-direction: column;
+        /* gap: 5px; */
+        text-transform: capitalize;
+        align-items: self-start;
+        /* background-color: aliceblue; */
+        /* justify-content: space-between; */
+    }
+
+    .RideInfo {
+        height: auto;
+        /* border: 1px solid black; */
+        width: 95vw;
+    }
+
+    .uu::before {
+        content: "";
+        position: absolute;
+        left: 15px;
+        top: 26px;
+        bottom: 209px;
+        border-left: 1px solid #22c55e;
+        /* dotted vertical line */
+    }
+}

@@ -35,7 +35,7 @@ const Navvbar = () => {
           <div className='items'>Products ▾</div>
           {/* <div className='items'>Customers</div> */}
           {
-            driver && <div className='items' onClick={() => navigate('/driverLogin')}>
+            !driver && <div className='items' onClick={() => navigate('/driverLogin')}>
               Driver
             </div>
           }

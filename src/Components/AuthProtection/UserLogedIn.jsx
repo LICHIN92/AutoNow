@@ -1,16 +1,14 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
 
-const Userprotection = ({ children }) => {
+const UserLogedIn = ({ children }) => {
     const token = localStorage.getItem('autoNowToken')
 
-    if (!token) {
+    if (token) {
         return children
 
     }
-        return <Navigate to="/" />
-
-
+    return <Navigate to="/" />
 }
 
-export default Userprotection
+export default UserLogedIn

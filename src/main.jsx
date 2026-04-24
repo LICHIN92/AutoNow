@@ -25,6 +25,8 @@ import AdminAuth from './Components/AuthProtection/AdminAuth.jsx';
 import DriverAuth from './Components/AuthProtection/DriverAuth.jsx';
 import DriverProtecttion from './Components/AuthProtection/DriverProtecttion.jsx';
 import ViewAccepted from './pages/ViewAccepted/ViewAccepted.jsx';
+import UserLogedIn from './Components/AuthProtection/UserLogedIn.jsx';
+import UserRideDetail from './pages/UserRideDetail/UserRideDetail.jsx';
 
 const router = createBrowserRouter([
   {
@@ -77,14 +79,22 @@ const router = createBrowserRouter([
       {
         path: '/userDashBoard',
         element: (
-          <Userprotection>
+          <UserLogedIn>
             <UserDash />
-          </Userprotection>
+          </UserLogedIn>
         )
       },
       {
-        path:'/viewAcceptedRide',
-        element:<ViewAccepted/>
+        path: '/viewAcceptedRide',
+        element: <ViewAccepted />
+      },
+      {
+        path: '/UserRideDetail/:id',
+        element: (
+          <UserLogedIn>
+            <UserRideDetail />
+          </UserLogedIn>
+        )
       }
     ]
   }

@@ -15,103 +15,181 @@
     height: auto;
     padding-block: 10px;
     background-color: rgb(240, 247, 245);
-    color: rgb(165, 115, 115);
+    padding-left: 15px;
 }
 
-.userdash p {
-    display: flex;
-    align-items: center;
-    padding-left: 5px;
+.userHead .nameHello {
+    gap: 5px;
     font-size: 2rem;
+    font-weight: 700;
     text-transform: capitalize;
-     font-family: 'Lobster Two';
-    font-style: italic;
-    font-size: 1.6 rem;
 }
 
-.userdash span {
-    font-family: 'Lobster Two';
-    font-style: italic;
-    font-size: 2.5rem;
-    margin-left: 5px;
-    padding-left: 4px;
-}
-.userdash div .logout{
-   font-family: 'Times New Roman', Times, serif;
-   font-size: medium;
-   color: rgb(170, 10, 10);
-   font-weight: lighter !important;
-}
-.userdash div .logout:hover{
-    background-color: wheat;
-    cursor: pointer;
-    padding: 2px;
-    padding-inline: 3px;
-}
-.userdash .rideContainer {
-    width: 100vw;
-    /* background-color: blanchedalmond; */
+.userHead .userIcon {
+    background-color: white;
+    width: 60px;
+    height: 60px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding-inline: 5px;
-    padding-block: 5px;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0;
+    border-radius: 50%;
+    padding: 5px;
+    border: 1px solid rgb(128, 128, 128, .5);
 }
 
-.ride {
-    width: 230px;
-    height: 180px;
-    background-color: rgb(240, 247, 245);
-    border: 1px solid rgb(243, 242, 242);
-    box-shadow: 5px 5px 5px 1px rgb(180, 161, 161);
-    font-size: small !important;
-    padding-top: 10px;
-    position: relative;
-}
-
-.ride span {
-    font-size: 1.3rem;
-    display: flex;
-    padding-left: 5px;
-    align-items: center;
-    gap: 2px;
-    text-transform: capitalize;
-    font-family: 'Times New Roman', Times, serif;
-    font-style: unset;
-}
-
-/* HTML: <div class="breadcrumb"></div> */
-.breadcrumb {
-    --s: 20px;
-    /* control the shape */
-
-    line-height: 1;
-    /* control the height */
-    padding-inline: .3em calc(var(--s) + .3em);
-    clip-path: polygon(0 0, calc(100% - var(--s)) 0, 100% 50%, calc(100% - var(--s)) 100%, 0 100%);
-    background: #048f7c;
-    width: fit-content;
-    position: relative;
-    top: 20px;
-    left: 3px;
-    color: white;
+.userIcon .user {
+    width: 50px;
     height: 30px;
 }
 
-.rideContainer .cancel {
-    position: relative;
-    top: 30px;
-    text-align: center;
+
+
+.userdash .userName {
     display: flex;
-    justify-content: center;
-    font-size: 1rem !important;
+    flex-direction: column;
+    /* background-color: #048f7c; */
+    gap: 0 !important;
 }
 
-.cancel span {
-    font-size: 1rem;
-    background-color: rgb(155, 19, 19);
-    text-align: center;
-    padding-inline: 5px;
-    color: white;
+.userdash .userName .welcome {
+    font-family: 'Times New Roman', Times, serif !important;
+}
+
+
+.userdash .logout {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: .91rem;
+    /* color: rgb(170, 10, 10); */
     cursor: pointer;
+    transition: 500ms all ease;
+    /* background-color: #22c55e; */
+    font-family: Arial, Helvetica, sans-serif;
+    width: 110px;
+    padding: 5px;
+    padding-block: 8px;
+    background-color: white;
+    box-shadow: 2px 1px 1px 1px rgb(0, 0, 0, .1);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+.userdash .rideContainer {
+   width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    /* gap: 20px; */
+    padding-inline: 10px;
+    padding-block: 15px;
+}
+
+.rideContainer .info {
+    width: 350px;
+    padding-block: 10px;
+    box-shadow: 1px 1px 3px 1px rgb(104, 102, 102, .1);
+    cursor: pointer;
+    transition: 5ms all ease-in-out;
+}
+.your{
+    text-decoration: underline;
+    text-decoration-color: #22c55e;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 7px;
+}
+.rideContainer .info:hover {
+   
+    box-shadow: 1px 1px 3px 4px rgb(104, 102, 102, .1);
+}
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline p {
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 0px;
+    bottom: 0;
+    border-left: 3px dotted #22c55e;
+    /* dotted vertical line */
+}
+
+.timeline .item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.timeline .item .fields {
+    font-size: .8rem;
+}
+
+.icon {
+    position: absolute;
+    left: -20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.pickup {
+    fill: blue;
+    size: 100px !important;
+}
+
+.drop {
+    position: absolute;
+    top: 35px;
+    fill: rgb(158, 6, 6);
+
+}
+
+.cancel {
+    display: flex;
+    justify-content: center;
+    /* background-color: #22c55e; */
+    height: 15%;
+    width: 100% !important;
+}
+
+.cancel .cancelButton {
+    width: 80%;
+    text-align: center;
+    border: 1px solid rgb(128, 128, 128,.3);
+    color: rgb(223, 3, 3);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+.accepted .accept{
+    border: 1px solid green !important;
+    border-radius: 5px;
+    color: green;
+    font-weight: bold;
+}
+@media(max-width:400px) {
+    .userdash .rideContainer {
+        width: 100vw;
+    }
+
+    .userHead .userIcon {
+       display: none;
+    }
+
+    /* .userIcon .user {
+        width: 30px;
+        height: 0px;
+    } */
 }

@@ -8,6 +8,8 @@ import ConfirmModal from '../../Components/cofirmModal/ConfirmModal'
 import { FaUserAlt } from 'react-icons/fa'
 import { clearUserData } from '../../redux/useSlice'
 import { useNavigate } from 'react-router-dom'
+import { IoIosLogOut } from 'react-icons/io'
+import { RiDeleteBin5Line } from 'react-icons/ri'
 const UserDash = () => {
 
     const user = useSelector((state) => state.user?.user)
@@ -17,8 +19,9 @@ const UserDash = () => {
     const [ride, setRide] = useState([])
     const [cancel, setCancel] = useState(false)
     const [Id, setId] = useState(null)
+    const [Ride_Id, setRide_Id] = useState(null)
     const dispatch = useDispatch()
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     useEffect(() => {
         const myride = async () => {
             try {
@@ -55,7 +58,12 @@ const UserDash = () => {
     const Logout = async () => {
         localStorage.removeItem('autoNowToken')
         dispatch(clearUserData(user))
-navigate('/signin')
+        navigate('/signin')
+    }
+    const UserRideDetailFunction = (id) => {
+        alert(id)
+        setRide_Id(id);
+        navigate(`/UserRideDetail/${id}`);
     }
     return (
         <div className='userdash'>
@@ -64,46 +72,90 @@ navigate('/signin')
             }
 
             <div className='userHead w-100'>
-                <p > <FaUserAlt fill='black' className='me-3' />
+                <div className='d-flex align-items-cente '>
+                    <div className='userIcon '>
+                        <FaUserAlt fill='green' className='user' />
+                    </div>
 
-                    hello
-                    <span>{user.Name}......!</span>
-                </p>
-                <div>
-                    <span className='logout' onClick={() => { Logout() }}>Log Out</span>
+                    <div className='userName d-flex  flex-column ms-1'>
+                        <div className='d-flex flex-wrap justify-content-lg-start nameHello align-items-center'>
+
+                            <span className=''> hello</span>
+                            <span className='text-success'>{user?.Name}! &#128075;</span>
+                        </div>
+                        <span className='welcome mb-1'>
+                            Welcome back your dashborad
+                        </span>
+                    </div>
+                </div>
+                <div className='d-flex align-items-center gap-2 logout'>
+                    <IoIosLogOut fill='red' onClick={() => { Logout() }} />
+                    <span onClick={() => { Logout() }}>Log Out</span>
                 </div>
             </div>
             <div className='rideContainer'>
-                {ride.map((data, index) => (
-                    <div className='ride '>
-                        <div>
-                            <span>
-                                <TbCurrentLocationFilled fill='blue' markerEnd='2px' />
-                                {data.pickup}
-                            </span>
-                            <span className='bg-success text-white'>
-                                {data.date} {convertTo12Hour(data.time)}
-                            </span>
-                        </div>
-                        <div>
-                            <span>
-                                <ImLocation2 fill='#C02C26' />
-                                {data.drop}
-                            </span>
-                        </div>
+                <p className=' text-capitalize fw-bold'>
+                    <span className='your'>Your</span> current ride
+                </p>
+                <div className='w-100  d-flex flex-wrap gap-2'>
+                    {ride.map((data, index) => (
+                        <div className=' info'>
+                            <div className="timeline">
+                                <div className="item">
+                                    <div>
+                                        <span>
+                                            <TbCurrentLocationFilled className="icon pickup" markerEnd='2px' />
 
-                        {data.Status == 'accepted' ?
-                            <div className='breadcrumb'>
-                                {data.Status}
-                            </div> :
-                            <div className='cancel'>
-                                <span onClick={() => { setId(data._id), setCancel(true) }}>
-                                    Cancel
-                                </span>
+                                        </span>
+                                        <span className='fields text-success'>
+                                            Pick up Location
+                                        </span>
+                                        <p>
+                                            {data.pickup}
+                                        </p>
+                                    </div>
+                                    <span className='bg-success text-white'>
+                                        {data.date} {convertTo12Hour(data.time)}
+                                    </span>
+                                </div>
+                                <div className="item">
+                                    <div>
+                                        <span>
+                                            <ImLocation2 className="icon drop" />
+                                        </span>
+                                        <span className='fields text-danger'>
+                                            Drop off Location
+                                        </span>
+                                        <p>
+                                            {data.drop}
+                                        </p>
+                                    </div>
+                                </div>
+
+
                             </div>
-                        }
-                    </div>
-                ))}
+                            {data.Status == 'accepted' ?
+                                <div className='text-center  accepted text-capitalize'>
+                                    <span onClick={() => { UserRideDetailFunction(data._id) }} className=' border-light-subtle accept p-1'>
+                                        your Ride is  {data.Status}
+
+                                    </span>
+                                </div> :
+                                <div className='cancel'>
+
+                                    <span className='cancelButton' onClick={() => { setId(data._id), setCancel(true) }}>
+                                        <RiDeleteBin5Line />
+                                        <span>
+                                        </span>
+                                        Cancel
+
+                                    </span>
+                                </div>
+                            }
+                        </div>
+                    ))}
+                </div>
+
             </div>
         </div>
     )
