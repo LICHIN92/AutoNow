@@ -61,7 +61,7 @@ const UserDash = () => {
         navigate('/signin')
     }
     const UserRideDetailFunction = (id) => {
-        alert(id)
+        // alert(id)
         setRide_Id(id);
         navigate(`/UserRideDetail/${id}`);
     }
@@ -136,14 +136,14 @@ const UserDash = () => {
                             </div>
                             {data.Status == 'accepted' ?
                                 <div className='text-center  accepted text-capitalize'>
-                                    <span onClick={() => { UserRideDetailFunction(data._id) }} className=' border-light-subtle accept p-1'>
+                                    <span onClick={() => { UserRideDetailFunction(data?._id) }} className=' border-light-subtle accept p-1'>
                                         your Ride is  {data.Status}
 
                                     </span>
                                 </div> :
                                 <div className='cancel'>
 
-                                    <span className='cancelButton' onClick={() => { setId(data._id), setCancel(true) }}>
+                                    <span className='cancelButton' onClick={() => { setId(data?._id), setCancel(true) }}>
                                         <RiDeleteBin5Line />
                                         <span>
                                         </span>
