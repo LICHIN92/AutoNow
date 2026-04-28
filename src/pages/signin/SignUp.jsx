@@ -20,7 +20,7 @@ const SignUp = () => {
             alert(res.data.message)
             localStorage.setItem('autoNowToken', res.data.token)
             reducfunction(res.data.token, dispatch)
-          navigate('/')
+          navigate('/userDashBoard')
 
         } catch (error) {
             console.log(error)

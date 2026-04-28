@@ -1,71 +1,68 @@
 .admin_container {
     padding-top: 90px;
     /* background-color: gray; */
-    height: 100vh;
-    width: 100vw !important;
+    max-height: min-content;
+    max-width: 100vw;
     box-sizing: border-box;
     margin: 0;
 }
 
 .admin_container .admin {
-    height: 80vh;
+    height: 100vh;
     width: 100% !important;
 }
 
 .admin .sideBar {
     /* background-color: burlywood; */
-    width: 20vw;
+    width: 15vw;
     height: 100%;
 }
-
-.sideBar ul {
-    list-style: none;
-    width: 100%;
-    height: 100%;
-    border-radius: 25px;
-    background-color: brown;
-    color: wheat;
-}
-.sideBar ul li{
+.sideBarOptionBox{
+    width: 80%;
+    /* background-color: aliceblue; */
+    border-radius: 5px;
+    height: 35px;
+    display: flex;
+    justify-content: c;
+    align-items: center;
+    padding-left: 10px;
+    gap: 5px;
     cursor: pointer;
 }
-
-.admin_container .main {
-    width: 80vw;
-    height: 100%;
+.sideBarOptionBox:hover{
+    background-color: rgba(245, 131, 143, 0.5);
 }
-.card{
-    padding-block: 5px;
-    min-width: 150px;
-    background-color: rgb(48, 100, 24);
-    /* text-align: center; */
+.main .card{
+    width: 150px;
+    height: 80px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-inline: 4px;
     cursor: pointer;
-    color: white;
-}
-.card span{
-    background-color: rgb(88, 59, 3);
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 4px;
-}
-@media(max-width:992px) {
-    .sideBar {
-        width: 100vw !important;
-        height: 20vh !important;
-    }
+    box-shadow:  1px 1px 2px 1px rgb(128, 128, 128,.3) ;
 
-    .admin_container .main {
-        width: 100vw !important;
-        height: 80vh !important;
-    }
+}
+.card .NameAndInfo{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+.main .card .symbol{
+size: 4px;
+background-color: rgba(3, 224, 58, 0.1);
+padding: 1px;
+border-radius: 5px;
+
+}
+
+
+@media(max-width:400px){
+    .main .card{
+    width: 130px;
+    height: 70px;
+     margin: 1px;
+
+}
 }

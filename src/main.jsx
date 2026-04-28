@@ -27,6 +27,8 @@ import DriverProtecttion from './Components/AuthProtection/DriverProtecttion.jsx
 import ViewAccepted from './pages/ViewAccepted/ViewAccepted.jsx';
 import UserLogedIn from './Components/AuthProtection/UserLogedIn.jsx';
 import UserRideDetail from './pages/UserRideDetail/UserRideDetail.jsx';
+import StationView from './pages/StationView/StationView.jsx';
+import StationBookView from './pages/StationBookView/StationBookView.jsx';
 
 const router = createBrowserRouter([
   {
@@ -95,6 +97,14 @@ const router = createBrowserRouter([
             <UserRideDetail />
           </UserLogedIn>
         )
+      },
+      {
+        path: "/station",
+        element: <StationView />
+      },
+      {
+        path:'/todaystation/:station',
+        element:<StationBookView/>
       }
     ]
   }

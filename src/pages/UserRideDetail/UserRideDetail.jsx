@@ -43,6 +43,18 @@ const UserRideDetail = () => {
             year: "numeric"
         });
     }
+    const convertTo12Hour = (time) => {
+        let [hours, minutes] = time.split(':');
+
+        hours = parseInt(hours);
+
+        let ampm = hours >= 12 ? 'PM' : 'AM';
+
+        hours = hours % 12;
+        hours = hours ? hours : 12; // 0 → 12
+
+        return `${hours}:${minutes} ${ampm}`;
+    };
     return (
         <div className='UserRideDetail'>
             <p className='text-success  text-capitalize' onClick={() => { navigate('/userDashBoard') }}>
@@ -97,7 +109,7 @@ const UserRideDetail = () => {
                                     <div className=' d-flex flex-column'>
                                         <small>Time</small>
 
-                                        <span>{data.time}</span>
+                                        <span>{convertTo12Hour(data.time)}</span>
 
                                     </div>
                                 </div>
@@ -128,7 +140,7 @@ const UserRideDetail = () => {
                                 <div className='h-50 d-flex flex-column gap-3'>
                                     <h3>{data.driverId?.Name}</h3>
                                     <div className=' d-flex align-items-center gap-2'>
-                                        <FaRegStar  fill='gold' className='star' />
+                                        <FaRegStar fill='gold' className='star' />
                                         <span>4.5</span>
                                     </div>
                                     <div className=' d-flex align-items-center gap-2'>

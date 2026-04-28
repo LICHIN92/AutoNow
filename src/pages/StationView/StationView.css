@@ -1,0 +1,55 @@
+.StationView{
+    max-width: 100vw;
+    max-height: 100vh;
+    box-sizing: border-box;
+    padding-top: 90px;
+}
+
+.bookDatailBox{
+    width: 180px;
+    height: 85px;
+    border-radius: 5px;
+    box-shadow: 1px 0px 2px 1px rgba(105, 105, 105, 0.3);
+    /* background-color: aliceblue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.iconBox {
+    background-color: rgba(3, 173, 3, 0.1);
+    padding: 7px;
+    border-radius: 5px;
+}
+.iconBoxx {
+    background-color: rgba(252, 3, 3, 0.2);
+    padding: 7px;
+    border-radius: 5px;
+}
+.station{
+    cursor: pointer;
+
+}
+.station:hover{
+    box-shadow: 1px 0px 2px 2px rgba(105, 105, 105, 0.3);
+    transition: 200ms all ease-in;
+
+}
+@media(max-width:450px){
+    .bookDatailBox{
+    width: 150px;
+    height: 65px;
+    border-radius: 5px;
+   
+}
+.bookDatailBox span{
+    font-size: small;
+}
+.iconBox {
+    background-color: rgba(3, 173, 3, 0.1);
+    padding: 7px;
+    border-radius: 5px;
+}
+.small{
+    font-size: small;
+}
+}

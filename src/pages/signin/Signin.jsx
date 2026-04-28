@@ -22,7 +22,7 @@ const Signin = () => {
       localStorage.setItem('autoNowToken', res.data.token)
 
       reducfunction(res.data.token, dispatch)
-      navigate('/')
+      navigate('/userDashBoard')
 
     } catch (error) {
       console.log(error.response);
