@@ -1,4 +1,4 @@
-.StationBookView{
+.StationBookView {
     padding-top: 90px;
     box-sizing: border-box;
     width: 100vw;
@@ -7,7 +7,7 @@
     flex-direction: column;
 }
 
-.StationBookView .Bookings{
+.StationBookView .Bookings {
     width: 180px;
     height: 85px;
     border-radius: 5px;
@@ -21,18 +21,67 @@
     cursor: pointer;
 }
 
-@media(max-width:400px){
-   .StationBookView .Bookings{
-    width: 150px;
-    height: 80px;
-    border-radius: 5px;
+.pending {
+    width: 300px;
+    height: 150px;
     box-shadow: 1px 0px 2px 1px rgba(105, 105, 105, 0.3);
-    /* background-color: aliceblue; */
+    background-color: rgb(99, 42, 42, .1);
+    gap: 3px;
+    padding-block: 2px;
+    padding-inline: 5px;
+    text-transform: capitalize;
+    position: relative;
+    border-radius: 5px;
+}
+.driverImageBox{
+    width: 40%;
+    height: 100% !important;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-transform: capitalize;
-    gap: 3px;
-    cursor: pointer;
+}
+.pending img{
+    width: 100%;
+    height: 100%;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 10px;
+}
+.pending_status {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(224, 31, 6);
+    border-radius: 5px;
+    top: -129px;
+    left: 190px;
+}
+
+@media(max-width:400px) {
+    .StationBookView .Bookings {
+        width: 150px;
+        height: 80px;
+        border-radius: 5px;
+        box-shadow: 1px 0px 2px 1px rgba(105, 105, 105, 0.3);
+        /* background-color: aliceblue; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: capitalize;
+        gap: 3px;
+        cursor: pointer;
+    }
+}
+
+@media(max-width:320px) {
+    .pending {
+        width: 99vw;
+        height: 150px;
+
+    }
+
+    .pending_status {
+       
+        top: -129px;
+        left: 210px;
     }
 }

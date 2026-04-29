@@ -32,13 +32,17 @@ const Navvbar = () => {
 
         {/* LEFT (Desktop only) */}
         <div className='left_side d-none d-md-flex gap-4 '>
-          <div className='items'>Products ▾</div>
+          {/* <div className='items'>Products ▾</div> */}
           {/* <div className='items'>Customers</div> */}
-          {
-            !driver && <div className='items' onClick={() => navigate('/driverLogin')}>
-              Driver
-            </div>
-          }
+
+          <div className='items' onClick={() => {
+            if (!driver) { return navigate('/driverLogin') }
+            navigate('/driverhome')
+          }}>
+            Driver
+          </div>
+
+
           {token && user.Role ?
             <div onClick={() => navigate('/admin')} className='items'>
               Admin

@@ -27,7 +27,7 @@ const Stattion = ({ close }) => {
                     <Input name={'standName'} label={'Stand Name'} register={register} rules={{required:'enter Stand Name'}} />
                     <div className='d-flex justify-content-center flex-wrap gap-1'>
                         <Buttunn value={'Add Station'} />
-                        <button onClick={() => close(false)}>Cancel</button>
+                        <button className='button' onClick={() => close(false)} >Cancel</button>
                     </div>
                 </form>
             </div>

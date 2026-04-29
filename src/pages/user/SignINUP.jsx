@@ -13,7 +13,7 @@ const SignINUP = () => {
                     :
                     <SignUp />
             }
-            <span className='mt-3 ' onClick={() => { setSignUP(!signUp) }}>
+            <span className={signUp?'mt-4':' gg'} onClick={() => { setSignUP(!signUp) }}>
                 click to {signUp?' Sign In':" Sign Up"}
                 </span>
             {/* <Map/> */}

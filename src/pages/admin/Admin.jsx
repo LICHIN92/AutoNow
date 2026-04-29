@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import './Admin.css'
 import axios from 'axios'
-import { MdAddLocationAlt, MdOutlineLocationCity } from "react-icons/md";
+import { MdAddLocationAlt, MdLogout, MdOutlineLocationCity } from "react-icons/md";
 import Stattion from '../../Components/addStation/Stattion';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
 import { PiCar } from 'react-icons/pi';
 import { HiOutlineCalendarDateRange } from 'react-icons/hi2';
 import { FaUser, FaUsers } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { clearUserData } from '../../redux/useSlice';
 const Admin = () => {
     const api_url = import.meta.env.VITE_API_URL
     const [drivers, setDrivers] = useState(null)
@@ -16,6 +18,7 @@ const Admin = () => {
     const [bookings, setBookings] = useState(null)
     const [stnd, setstnd] = useState(false)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     useEffect(() => {
         const allfun = async () => {
 
@@ -71,15 +74,20 @@ const Admin = () => {
         }
         station()
     })
+    const Logout = () => {
+        localStorage.removeItem('autoNowToken')
+        dispatch(clearUserData(user))
+        navigate('/signin')
+    }
     return (
         <div className='admin_container d-flex  '>
-            {stnd && <Stattion close={setstnd} />}
+            
             {/* <h3 className=''>Admin Control</h3> */}
             <div className="d-flex  admin">
 
                 {/* side bar */}
                 <div className='sideBar bg-danger text-white d-flex flex-column gap-3 justify-content-center align-items-center'>
-                    
+
                     <div className='sideBarOptionBox'>
                         <AiOutlineHome />
                         <span className=' d-none d-lg-block'>DashBoard</span>
@@ -107,6 +115,11 @@ const Admin = () => {
                     <div className='sideBarOptionBox'>
                         <span>Settings</span>
                     </div>
+                    <div onClick={() => Logout()} className='sideBarOptionBox mt-3 border-1 logout'>
+                        <MdLogout />
+                        <span className=' d-none d-lg-block'>Log out</span>
+
+                    </div>
                 </div>
 
                 {/* main */}
@@ -115,7 +128,7 @@ const Admin = () => {
 
                     <div className="cards d-flex justify-content-lg-center pt-3  gap-1 gap-md-3 flex-wrap ">
                         <div className="card" onClick={() => { driver() }}>
-                            <div className='NameAndInfo'>
+                            <div className='NameAndInfo' onClick={() => { navigate('/viewDriver') }}>
                                 <small>Total Drivers</small>
                                 <div>
                                     {drivers && <span>{drivers}</span>}
@@ -141,7 +154,7 @@ const Admin = () => {
                             </div>
 
                         </div>
-                        <div className="card" >
+                        <div className="card" onClick={()=>{navigate('/stations')}} >
                             <div className="NameAndInfo">
                                 <small>Stations</small>
                                 <div>
@@ -166,17 +179,9 @@ const Admin = () => {
                             </div>
                         </div>
                     </div>
-                    {/* <div className='mt-3'>
-                        {drivers &&
-                            <p>Registered Drivers: {drivers}</p>
-                        }
-                    </div> */}
+                    
+
                     {/* <div>
-                        {user &&
-                            <p>User: {user}</p>
-                        }
-                    </div> */}
-                    <div>
                         {stations &&
 
                             <div style={{ height: '40px' }} className='d-flex align-items-center gap-2 ps-2' >
@@ -186,7 +191,7 @@ const Admin = () => {
 
                                 </div>
                             </div>}
-                    </div>
+                    </div> */}
                 </div>
             </div>
 

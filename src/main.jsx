@@ -29,6 +29,7 @@ import UserLogedIn from './Components/AuthProtection/UserLogedIn.jsx';
 import UserRideDetail from './pages/UserRideDetail/UserRideDetail.jsx';
 import StationView from './pages/StationView/StationView.jsx';
 import StationBookView from './pages/StationBookView/StationBookView.jsx';
+import Stations from './pages/StationS/Stations.jsx';
 
 const router = createBrowserRouter([
   {
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
       {
         path:'/todaystation/:station',
         element:<StationBookView/>
+      },
+      {
+        path:'/stations',
+        element:<Stations/>
       }
     ]
   }

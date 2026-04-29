@@ -1,11 +1,58 @@
-
-.signin{
+.signin {
     padding: 0;
     margin: 0;
-    /* max-width: 100vw;
-    max-height: 100v;
+    max-width: 100vw;
+    max-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; */
+    justify-content: center;
+}
+
+.signin .signinDiv {
+    width: 500px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    padding-left: 45px;
+    padding-block: 10px;
+    /* align-items: center; */
+    /* justify-cont;    align-items: center; */
+}
+
+.signinDiv Input {
+    width: 90%;
+}
+.signinDiv img{
+    width: 50px;
+  height: 40px;
+}
+
+@media(max-width:518px) {
+    .signin .signinDiv {
+        width: 95vw;
+        padding-left: 40px;
+        padding-block: 10px;
+
+    }
+}
+@media(max-width:412px) {
+    .signin .signinDiv {
+        width: 95vw;
+        padding-left: 30px;
+        padding-block: 10px;
+
+    }
+}
+
+@media(max-width:332px) {
+    .signin .signinDiv {
+        width: 95vw;
+        padding-left: 15px;
+        padding-block: 10px;
+        padding-right: 0px !important;
+
+    }
 }

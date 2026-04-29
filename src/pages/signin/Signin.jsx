@@ -7,6 +7,7 @@ import './signin.css'
 import reducfunction from '../../redux/reduxfun'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import auto from '../../assets/image/auto.png'
 const Signin = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const api_url = import.meta.env.VITE_API_URL
@@ -31,42 +32,50 @@ const Signin = () => {
   }
   return (
     <div className='signin '>
-      <h1 className=' text-center mb-4 text-capitalize'>Sign up</h1>
-      <form className=' d-flex flex-column align-items-center  justify-content-center' onSubmit={handleSubmit(Signup)}>
-        <Input
-          label="Name"
-          type="text"
-          name="Name"
-          register={register}
-          errors={errors}
-          rules={{ required: "Name is required" }}
-        />
-        <Input
-          label="Mobile"
-          type="text"
-          name="Mobile"
-          register={register}
-          errors={errors}
-          rules={{ required: "Mobile is required" }}
-        />
-        <Input
-          label="Password"
-          type="password"
-          name="Password"
-          register={register}
-          errors={errors}
-          rules={{ required: "Password is required" }}
-        />
-        <Input
-          label="Confirm Password"
-          type="password"
-          name="password"
-          register={register}
-          errors={errors}
-          rules={{ required: "confirm Password is required" }}
-        />
-        <Buttunn name={'submit'} value={'Sign Up'} type={'submit'} />
-      </form>
+      <div className='signinDiv'>
+        <div className='d-flex justify-content-center '>
+          <img src={auto} alt="" />
+          <h1 className=' text-center mb-4 text-capitalize'>Sign up</h1>
+        </div>
+        <form onSubmit={handleSubmit(Signup)}>
+          <Input
+            label="Name"
+            type="text"
+            name="Name"
+            register={register}
+            errors={errors}
+            rules={{ required: "Name is required" }}
+          />
+          <Input
+            label="Mobile"
+            type="text"
+            name="Mobile"
+            register={register}
+            errors={errors}
+            rules={{ required: "Mobile is required" }}
+          />
+          <Input
+            label="Password"
+            type="password"
+            name="Password"
+            register={register}
+            errors={errors}
+            rules={{ required: "Password is required" }}
+          />
+          <Input
+            label="Confirm Password"
+            type="password"
+            name="password"
+            register={register}
+            errors={errors}
+            rules={{ required: "confirm Password is required" }}
+          />
+          <div className='d-flex justify-content-center'>
+            <Buttunn name={'submit'} value={'Sign Up'} type={'submit'} />
+
+          </div>
+        </form>
+      </div>
     </div>
   )
 }
