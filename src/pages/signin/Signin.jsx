@@ -33,8 +33,8 @@ const Signin = () => {
   return (
     <div className='signin '>
       <div className='signinDiv'>
-        <div className='d-flex justify-content-center '>
-          <img src={auto} alt="" />
+        <div className='d-flex justify-content-center gap-1'>
+          <img src={auto} alt="" className='mt-1' />
           <h1 className=' text-center mb-4 text-capitalize'>Sign up</h1>
         </div>
         <form onSubmit={handleSubmit(Signup)}>

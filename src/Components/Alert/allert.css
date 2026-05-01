@@ -1,0 +1,32 @@
+.Allert {
+    /* background-color: aquamarine; */
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.Allert .AllertBox {
+    width: 450px;
+    background-color: #171717;
+    height: 90px;
+    color: white;
+    border-radius: 8px;
+    padding: 5px;
+    padding-left: 10px;
+    gap: 3px;
+    border: 2px solid rgb(165, 149, 149);
+}
+
+@media(max-with:666px) {
+    .Allert .AllertBox {
+        width: 96vw;
+    }
+
+        
+}

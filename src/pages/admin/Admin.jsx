@@ -104,7 +104,7 @@ const Admin = () => {
                         <MdOutlineLocationCity />
                         <span className=' d-none d-lg-block'>Stations</span>
                     </div>
-                    <div className='sideBarOptionBox'>
+                    {/* <div className='sideBarOptionBox'>
                         <span>Users</span>
                     </div>
                     <div className='sideBarOptionBox'>
@@ -114,10 +114,10 @@ const Admin = () => {
                     </div>
                     <div className='sideBarOptionBox'>
                         <span>Settings</span>
-                    </div>
-                    <div onClick={() => Logout()} className='sideBarOptionBox mt-3 border-1 logout'>
-                        <MdLogout />
-                        <span className=' d-none d-lg-block'>Log out</span>
+                    </div> */}
+                    <div onClick={() => Logout()} className='sideBarOptionBox mb-2 mt-5 border-1 logout'>
+                        <MdLogout className='logoutSimbol' />
+                        <span className=' d-md-block'>Log out</span>
 
                     </div>
                 </div>

@@ -1,0 +1,80 @@
+.AdminModal{
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    background-color: rgb(207, 123, 123);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.AdminModalBox{
+    width: 400px;
+    height: 250px;
+    background-color: white;
+    text-align: center;
+    border-radius: 15px  !important;
+    /* border: 1px solid; */
+}
+.AdminModalBox h4{
+    color: #573C9F;
+}
+.firstBox{
+    height: 80%;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.imgeBox{
+    width: 80px;
+    height: 45%;
+    background-color:rgb(88,59,159,.1);
+    border: 1pz solid whitesmoke;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+}
+.msgBox{
+    height: 60%;
+    width: 100%;
+    /* background-color: brown; */
+    display: flex;
+    flex-direction: column;
+    color: #573C9F;
+}
+
+.buttonBox{
+    height: 20%;
+    /* background-color: chocolate; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.buttonBox span{
+    width: 100px;
+    height: 30px;
+    background-color: aqua;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonBox span:first-child{
+    background-color: white;
+    border: 1px solid rgb(128, 128, 128,.5);
+    color: black;
+}
+
+.buttonBox span:last-child{
+    background-color: #573C9F;
+    color: wheat;
+}

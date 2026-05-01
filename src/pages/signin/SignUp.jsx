@@ -41,8 +41,8 @@ const SignUp = () => {
     return (
         <div className='signup'>
             <div className='signupDiv'>
-                <div className=' d-flex justify-content-center gap-1 align-items-center'>
-                    <img src={auto} alt="" />
+                <div className=' d-flex justify-content-center gap-1 '>
+                    <img src={auto} alt="" className='mt-1' />
                     <h1 className='text-center text-capitalize mb-3'>Sign In</h1>
                 </div>
 
