@@ -54,7 +54,15 @@ const Revenue = () => {
         <span className='fw-bold fs-3'>Today's Revenue </span>
         <div className='d-flex gap-2 ps-1 align-items-center' >
           <span className=''>{datee}</span>
-          <span>{time.toLocaleTimeString()}</span>
+          <span>
+            {time.toLocaleTimeString('en-US', {
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit',
+              hour12: true
+            })
+            }
+          </span>
           <GrRefresh className={refresh ? 'rotate' : ''} onClick={() => { refreshFunction() }} />
         </div>
       </div>
