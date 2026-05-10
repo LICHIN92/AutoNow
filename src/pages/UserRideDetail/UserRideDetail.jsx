@@ -9,6 +9,8 @@ import { IoCallOutline, IoPricetagOutline } from 'react-icons/io5'
 import { MdDirectionsCar } from 'react-icons/md'
 import { CiStar } from 'react-icons/ci'
 import { FaRegStar } from 'react-icons/fa'
+import auto from '../../assets/image/auto-rickshaw-svgrepo-com.svg'
+
 const UserRideDetail = () => {
     const { id } = useParams()
     const api_Url = import.meta.env.VITE_API_URL
@@ -147,8 +149,12 @@ const UserRideDetail = () => {
                                         <IoCallOutline />
                                         <span>{data.driverId?.Mobile}</span>
                                     </div>
-                                    <div className=' d-flex align-items-center gap-2'>
-                                        <MdDirectionsCar />
+                                    <div className='gap-2 d-flex align-items-center justify-content-start b'>
+                                        {/* <MdDirectionsCar /> */}
+                                        <div className='imageIcon '>
+                                            <img  src={auto}  alt="Auto" />
+
+                                        </div>
                                         <span className=' text-uppercase'>{data.driverId?.vehicleNumber}</span>
 
                                     </div>

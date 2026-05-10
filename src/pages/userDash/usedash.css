@@ -74,8 +74,13 @@
     cursor: pointer;
 }
 
-
-
+.BookIcon{
+    width: 126px;
+    cursor: pointer;
+}
+.BookIcon small{
+    color: #2563eb;
+}
 .userdash .rideContainer {
    width: 100vw;
     display: flex;
@@ -89,9 +94,10 @@
 .rideContainer .info {
     width: 350px;
     padding-block: 10px;
-    box-shadow: 1px 1px 3px 1px rgb(104, 102, 102, .1);
+    box-shadow: 1px 1px 5px 2px rgb(104, 102, 102, .1);
     cursor: pointer;
     transition: 5ms all ease-in-out;
+    
 }
 .your{
     text-decoration: underline;

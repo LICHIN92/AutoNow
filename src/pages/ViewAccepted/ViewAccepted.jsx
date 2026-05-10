@@ -43,10 +43,8 @@ const ViewAccepted = ({ refresh }) => {
             )
             setOk(true)
             setTimeout(() => {
-                navigate('/driverhome')
-                refresh((prev) => !prev)
-
-
+                navigate('/driverhome', { replace: true });
+                refresh(prev => !prev);
             }, 1500);
         } catch (error) {
             console.log(error)
@@ -63,7 +61,7 @@ const ViewAccepted = ({ refresh }) => {
                     <h4 className='text-text-center'><span className='under'>Ride</span> Info</h4>
                     <div className=' d-flex flex-column gap-2 gap-lg-3 '>
                         <div className='d-flex align-items-center  gap-2'>
-                            <span className='d-flex align-items-center'>
+                            <span className='d-flex align-items-center pb-3 pb-md-0'>
                                 <AiOutlineUser fill='green' className='icons' />
 
                             </span>
@@ -75,7 +73,7 @@ const ViewAccepted = ({ refresh }) => {
                             </div>
                         </div>
                         <div className='d-flex align-items-center gap-2'>
-                            <span className='d-flex align-items-center'>
+                            <span className='d-flex align-items-center  pb-3 pb-md-0'>
                                 <IoCallOutline fill='green' className='icons' />
 
                             </span>
@@ -91,8 +89,8 @@ const ViewAccepted = ({ refresh }) => {
                             </div>
 
                         </div>
-                        <div className='d-flex align-items-center gap-2'>
-                            <span>
+                        <div className='d-flex  align-items-center gap-2'>
+                            <span className='d-flex align-items-center  pb-3 pb-md-0'>
                                 <IoLocationOutline className='icons' />
                             </span>
                             <div className='d-flex flex-column flex-md-row justify-content-between w-100'>
@@ -105,7 +103,7 @@ const ViewAccepted = ({ refresh }) => {
                         </div>
 
                         <div className='d-flex align-items-center gap-2'>
-                            <span>
+                            <span className='d-flex align-items-center  pb-3 pb-md-0'>
                                 <IoLocationOutline className='icons' />
                             </span>
                             <div className='d-flex flex-column flex-md-row justify-content-between w-100'>
@@ -117,7 +115,7 @@ const ViewAccepted = ({ refresh }) => {
                             </div>
                         </div>
                         <div className='d-flex align-items-center gap-2'>
-                            <span>
+                            <span className='d-flex align-items-center  pb-3 pb-md-0'>
                                 <HiOutlineCalendarDateRange className='icons' />
                             </span>
                             <div className='d-flex flex-column flex-md-row justify-content-between w-100'>
@@ -129,7 +127,7 @@ const ViewAccepted = ({ refresh }) => {
                             </div>
                         </div>
                         <div className='d-flex align-items-center gap-2'>
-                            <span>
+                            <span className='d-flex align-items-center  pb-3 pb-md-0'>
                                 <MdAccessTime className='icons' />
                             </span>
                             <div className='d-flex flex-column flex-md-row justify-content-between w-100'>

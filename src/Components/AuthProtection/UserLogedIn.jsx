@@ -8,7 +8,7 @@ const UserLogedIn = ({ children }) => {
         return children
 
     }
-    return <Navigate to="/" />
+    return <Navigate to="/signin" />
 }
 
 export default UserLogedIn

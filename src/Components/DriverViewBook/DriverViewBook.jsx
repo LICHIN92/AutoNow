@@ -82,7 +82,7 @@ const DriverViewBook = ({ id, close, refresh }) => {
                     {data &&
                         <div>
                             <div className='box '>
-                                <div className="folded-rectangle">
+                                <div className="frectangle">
                                     <p className='text-center text-capitalize fw-bolder'>{data.pickup}</p>
                                     <p className='text-center'> <FaArrowDown /> </p>
                                     <p className='text-center text-capitalize fw-bolder'>{data.drop}</p>
@@ -94,8 +94,8 @@ const DriverViewBook = ({ id, close, refresh }) => {
 
                                 {
                                     (data.Status === 'accepted' || data.Status === 'ongoing') && (
-                                        <div>
-                                            Booked By
+                                        <div className='Booked_By'>
+                                            <h5>Booked By</h5>
                                             <p>{data.userId?.Name}</p>
                                             <p>{data.userId?.Mobile}</p>
                                         </div>
@@ -103,7 +103,7 @@ const DriverViewBook = ({ id, close, refresh }) => {
                                 }
                                 {data.Status === 'pending' &&
                                     <button className='px-2 mb-2' onClick={() => { setDriverModal(true) }}>
-                                        Yes! I'm Ready
+                                        Yes! Go Ride
                                     </button>
                                 }
                                 <button className='px-2' onClick={() => { close(false), refresh(!prev) }}>

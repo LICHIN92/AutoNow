@@ -10,6 +10,7 @@ import { clearUserData } from '../../redux/useSlice'
 import { useNavigate } from 'react-router-dom'
 import { IoIosLogOut } from 'react-icons/io'
 import { RiDeleteBin5Line } from 'react-icons/ri'
+import { BiAddToQueue } from 'react-icons/bi'
 const UserDash = () => {
 
     const user = useSelector((state) => state.user?.user)
@@ -20,6 +21,7 @@ const UserDash = () => {
     const [cancel, setCancel] = useState(false)
     const [Id, setId] = useState(null)
     const [Ride_Id, setRide_Id] = useState(null)
+    const [allow, setAllow] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     useEffect(() => {
@@ -37,13 +39,28 @@ const UserDash = () => {
         }
         myride()
     }, [Id, cancel])
+
+    // useEffect(() => {
+    //     if (ride.length >= 2) {
+    //         const count = data.filter(item => item.Status === "pending").length;
+    //         if (count >= 2) {
+    //             setAllow(false)
+    //         } else {
+    //             setAllow(true)
+    //         }
+    //     }
+    // }, [ride])
+
     const cancelRide = async () => {
         try {
             const res = await axios.delete(`${api_Url}/user/cancel/${Id}`)
             setCancel(false)
-            alert(res.data)
+            // alert(res.data)
         } catch (error) {
             console.log(error)
+            setCancel(false)
+
+            alert(error.response.data)
         }
     }
     const convertTo12Hour = (time) => {
@@ -100,63 +117,70 @@ const UserDash = () => {
                 <p className=' text-capitalize fw-bold'>
                     <span className='your'>Your</span> current ride
                 </p>
-                <div className='w-100  d-flex flex-wrap gap-2'>
-                    {ride.map((data, index) => (
-                        <div className=' info'>
-                            <div className="timeline">
-                                <div className="item">
-                                    <div>
-                                        <span>
-                                            <TbCurrentLocationFilled className="icon pickup" markerEnd='2px' />
+                <div className='w-100  d-flex flex-column flex-wrap gap-2'>
+                    <div className='BookIcon' onClick={() => { navigate('/') }}>
+                        <BiAddToQueue size={25} fill='#2563eb' />
+                        <small className='ms-1'>Book Now Ride</small>
+                    </div>
+                    <div className='d-flex flex-wrap gap-2 gap-md-3 '>
+                        {ride.map((data, index) => (
+                            <div className=' info'>
+                                <div className="timeline">
+                                    <div className="item">
+                                        <div>
+                                            <span>
+                                                <TbCurrentLocationFilled className="icon pickup" markerEnd='2px' />
 
+                                            </span>
+                                            <span className='fields text-success'>
+                                                Pick up Location
+                                            </span>
+                                            <p>
+                                                {data.pickup}
+                                            </p>
+                                        </div>
+                                        <span className='bg-success text-white'>
+                                            {data.date} {convertTo12Hour(data.time)}
                                         </span>
-                                        <span className='fields text-success'>
-                                            Pick up Location
-                                        </span>
-                                        <p>
-                                            {data.pickup}
-                                        </p>
                                     </div>
-                                    <span className='bg-success text-white'>
-                                        {data.date} {convertTo12Hour(data.time)}
-                                    </span>
-                                </div>
-                                <div className="item">
-                                    <div>
-                                        <span>
-                                            <ImLocation2 className="icon drop" />
-                                        </span>
-                                        <span className='fields text-danger'>
-                                            Drop off Location
-                                        </span>
-                                        <p>
-                                            {data.drop}
-                                        </p>
+                                    <div className="item">
+                                        <div>
+                                            <span>
+                                                <ImLocation2 className="icon drop" />
+                                            </span>
+                                            <span className='fields text-danger'>
+                                                Drop off Location
+                                            </span>
+                                            <p>
+                                                {data.drop}
+                                            </p>
+                                        </div>
                                     </div>
+
+
                                 </div>
+                                {data.Status == 'accepted' ?
+                                    <div className='text-center  accepted text-capitalize'>
+                                        <span onClick={() => { UserRideDetailFunction(data?._id) }} className=' border-light-subtle accept p-1'>
+                                            your Ride is  {data.Status}
 
+                                        </span>
+                                    </div> :
+                                    <div className='cancel'>
 
+                                        <span className='cancelButton' onClick={() => { setId(data?._id), setCancel(true) }}>
+                                            <RiDeleteBin5Line />
+                                            <span>
+                                            </span>
+                                            Cancel
+
+                                        </span>
+                                    </div>
+                                }
                             </div>
-                            {data.Status == 'accepted' ?
-                                <div className='text-center  accepted text-capitalize'>
-                                    <span onClick={() => { UserRideDetailFunction(data?._id) }} className=' border-light-subtle accept p-1'>
-                                        your Ride is  {data.Status}
+                        ))}
+                    </div>
 
-                                    </span>
-                                </div> :
-                                <div className='cancel'>
-
-                                    <span className='cancelButton' onClick={() => { setId(data?._id), setCancel(true) }}>
-                                        <RiDeleteBin5Line />
-                                        <span>
-                                        </span>
-                                        Cancel
-
-                                    </span>
-                                </div>
-                            }
-                        </div>
-                    ))}
                 </div>
 
             </div>

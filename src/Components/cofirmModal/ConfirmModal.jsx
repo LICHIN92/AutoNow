@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './confirm.css'
 import { Button } from 'react-bootstrap'
 import { CiWarning } from 'react-icons/ci'
 const ConfirmModal = ({ msg, close, fun }) => {
+    const [clicked, setClicked] = useState(false)
     return (
         <div className='ConfirmMo'>
 
@@ -18,9 +19,20 @@ const ConfirmModal = ({ msg, close, fun }) => {
                     <Button onClick={() => { close(false) }} style={{ backgroundColor: 'wheat', color: "black", border: 'none' }} >
                         No,Go back
                     </Button>
-                    <Button onClick={()=>{fun()}} style={{ backgroundColor: '#EB312F', color: "white", border: 'none' }}>
-                        Yes,Cancel Ride
-                    </Button>
+                    
+                    {!clicked ?
+                        <Button onClick={() => { setClicked(true), fun() }} style={{ backgroundColor: '#EB312F', color: "white", border: 'none' }}>
+                            Yes,Cancel Ride
+                        </Button>
+                        :
+                        <Button className='d-flex align-items-center gap-3' style={{ backgroundColor: '#EB312F', color: "white", border: 'none' }}>
+                            <div>
+                                Please wait
+                            </div>
+                            <div class="spinner-border" role="status">
+                            </div>
+                        </Button>
+                    }
                 </div>
             </div>
         </div>

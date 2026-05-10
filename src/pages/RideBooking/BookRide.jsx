@@ -10,6 +10,7 @@ import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { IoMdTimer } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
+import Allert from '../../Components/Alert/Allert'
 const BookRide = () => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedTime, setSelectedTime] = useState(null);
@@ -20,7 +21,9 @@ const BookRide = () => {
     const user = useSelector((state) => state.user.user)
     const [stands, setStands] = useState([])
     const [selectedStand, setSelectedStand] = useState("");
-    console.log(user);
+    const [openalert, Setopenalert] = useState(false)
+    const [msg, setmsg] = useState('')
+    // console.log(user);
     const navigate = useNavigate()
     const Opencalender = () => {
         dateRef.current?.setOpen(true);
@@ -36,9 +39,9 @@ const BookRide = () => {
                 const res = await axios.get(`${api_url}/ride/getStand`)
                 console.log(res.data);
                 setStands(res.data)
+
             } catch (error) {
                 console.log(error);
-
             }
         }
         getstand()
@@ -70,6 +73,15 @@ const BookRide = () => {
     };
 
     const RideBook = async (data) => {
+        if (!selectedStand) {
+            return alert('Please select Nearest stand')
+        }
+        if (!selectedDate) {
+            return alert('Please select Date')
+        }
+        if (!selectedTime) {
+            return alert('Please select Time')
+        }
         const token = localStorage.getItem('autoNowToken')
         if (!token) {
             return navigate('/signin')
@@ -91,16 +103,25 @@ const BookRide = () => {
         data.date = formattedDate,
             data.time = formattedTime,
             data.userId = user.id,
-            data.nearStand=selectedStand
+            data.nearStand = selectedStand
+
         try {
             const res = await axios.post(`${api_url}/ride`, data)
+            alert(res.data)
+            navigate('/userDashBoard')
+
         } catch (error) {
             console.log(error);
+            alert(error.response.data)
+            // navigate('/userDashBoard')
 
         }
     }
     return (
         <div className=' RideBooking container-fluid'>
+
+
+
             <div className='row'>
 
                 <div className='col-lg-6 py-4 bg-success d-flex flex-column justify-content-center align-items-center'>
@@ -136,7 +157,7 @@ const BookRide = () => {
                                 <span><FaCalendarDay style={{ marginRight: "8px" }} />
                                     Pick-Up Date</span>
                             </label>
-                            <input className='dateTime'
+                            <input className='dateTime ps-1'
                                 type="text"
                                 readOnly
                                 value={selectedDate ? selectedDate.toLocaleDateString() : ""}
@@ -162,34 +183,42 @@ const BookRide = () => {
                             />
                         </div>
 
-                        {selectedDate && <div className='timeSlot d-flex flex-column'>
-                            <label htmlFor="" style={{ color: 'white' }}><IoMdTimer color='white' size={20} style={{ marginBottom: "4px", marginRight: "8px" }} />
-                                Pick-Up Time</label>
-                            <input className='dateTime'
-                                type="text"
-                                readOnly
-                                value={selectedTime ? selectedTime.toLocaleTimeString() : ""}
-                                onClick={() => setIsTimeOpen(true)}
-                                placeholder='select Time'
-                            />
-                            <div className='timeSlot position-relative'>
-                                <DatePicker
-                                    selected={selectedTime}
-                                    onChange={(time) => {
-                                        setSelectedTime(time);
-                                        setIsTimeOpen(false);
-                                    }}
-                                    open={isTimeOpen}
-                                    onClickOutside={() => setIsTimeOpen(false)}
-                                    showTimeSelect
-                                    showTimeSelectOnly
-                                    timeIntervals={15}
-                                    dateFormat="h:mm aa"
-                                    filterTime={filterPassedTime}
+                        {selectedDate &&
+                            <div className='timeSlot d-flex flex-column'>
+                                <label htmlFor="" style={{ color: 'white' }}><IoMdTimer color='white' size={20} style={{ marginBottom: "4px", marginRight: "8px" }} />
+                                    Pick-Up Time</label>
+                                <input className='dateTime ps-1'
+                                    type="text"
+                                    readOnly
+                                    value={selectedTime ? selectedTime.toLocaleTimeString('en-US', {
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                        hour12: true
+                                    }) : ""}
+                                    onClick={() => setIsTimeOpen(true)}
+                                    placeholder='select Time'
                                 />
+                                <div className='timeSlot position-relative'>
+                                    <DatePicker
+                                        selected={selectedTime}
+                                        onChange={(time) => {
+                                            setSelectedTime(time);
+                                            setIsTimeOpen(false);
+                                        }}
+                                        open={isTimeOpen}
+                                        onClickOutside={() => setIsTimeOpen(false)}
+                                        showTimeSelect
+                                        showTimeSelectOnly
+                                        timeIntervals={15}
+                                        dateFormat="h:mm aa"
+                                        filterTime={filterPassedTime}
+                                        // Time range
+                                        minTime={new Date().setHours(5, 15)}
+                                        maxTime={new Date().setHours(22, 30)}
+                                    />
 
-                            </div>
-                        </div>}
+                                </div>
+                            </div>}
 
                         <div className='btn_box mb-2'>
                             <Buttunn value={'Book'} type={'submit'} bgcolor={'black'} />

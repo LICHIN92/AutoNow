@@ -12,18 +12,43 @@
 }
 .modal_Box{
     min-width: 400px;
-    height: 200px;
+    min-height: 200px;
     background-color: whitesmoke;
+padding-block: 15px;
     text-align: center;
     padding-top: 15px;
+    border-radius: 10px;
 }
 .drivermodal .modal_Box div{
     display: flex;
     justify-content: center;
-    gap: 5px;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 .modal_Box button{
-    width: 56px;
+    width: 70px;
+    height: 28px;
+    border-radius: 5px;
     /* padding-inline: 5px; */
     text-align: center;
+    text-transform: capitalize;
+    border: none;
+color: white;
+}
+.modal_Box button:first-of-type{
+   background-color: rgb(114, 114, 13);
+}
+.modal_Box button:last-of-type{
+   background-color:darkred ;
+}
+
+@media(max-width:400px){
+    .modal_Box{
+    min-width: 98vw;
+    height: 200px;
+    background-color: whitesmoke;
+    text-align: center;
+    padding-top: 15px;
+    border-radius: 10px;
+}
 }

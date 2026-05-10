@@ -44,14 +44,22 @@ const Navvbar = () => {
 
 
           {token && user.Role ?
-            <div onClick={() => navigate('/admin')} className='items'>
+            <div onClick={() => { return navigate('/admin') }} className='items'>
               Admin
             </div>
             :
-            <div className='items' onClick={() => navigate('userDashBoard')}>
+            <div className='items' onClick={() => {
+              if (token) {
+                return navigate('/userDashBoard')
+              }
+              navigate('/signin')
+            }}>
               User
             </div>
           }
+          <div className='right_side d-none d-md-flex align-items-center gap-3'>
+            {!token && <div className='items' onClick={() => { navigate('/signin') }}>Sign in</div>}
+          </div>
         </div>
 
         {/* LOGO */}
@@ -60,15 +68,9 @@ const Navvbar = () => {
         </div>
 
         {/* RIGHT (Desktop only) */}
-        <div className='right_side d-none d-md-flex align-items-center gap-3'>
-          {token ?
-            <div>
-              <BsPersonBoundingBox size={25} />
-
-            </div>
-            : <div onClick={() => { navigate('/signin') }}>Sign in</div>}
-          <button className='demo_btn'>See a demo →</button>
-        </div>
+        {/* <div className='right_side d-none d-md-flex align-items-center gap-3'>
+          {!token && <div onClick={() => { navigate('/signin') }}>Sign in</div>}
+        </div> */}
 
         {/* MOBILE MENU ICON */}
         <div className='d-md-none'>
@@ -89,19 +91,21 @@ const Navvbar = () => {
       {/* MOBILE DROPDOWN */}
       {open && (
         <div className='mobile_menu'>
-          <div>Products</div>
-          <div>Customers</div>
+
           <div className='items' onClick={() => { setOpen(!open), navigate('/driverLogin') }}>Driver</div>
           {token && user.Role ?
             <div onClick={() => { setOpen(!open), navigate('/admin') }} className='items'>
               Admin
             </div>
             :
-            <div className='items' onClick={() => { setOpen(!open), navigate('userDashBoard') }}>
+            <div className='items' onClick={() => { setOpen(!open), navigate('/userDashBoard') }}>
               User
             </div>
           }
-          <button className='demo_btn w-100 mt-2'>See a demo</button>
+          {!token && <div className='items' onClick={() => { setOpen(!open), navigate('/signin') }}>
+            Sign In
+          </div>}
+
         </div>
       )}
 

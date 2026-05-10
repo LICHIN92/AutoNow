@@ -19,6 +19,8 @@ const Driver = () => {
         try {
             const res = await axios.post(`${api_Url}/driver`, data)
             console.log(res.data);
+            setlogin(true)
+            reset()
             alert(res.data)
         } catch (error) {
             console.log(error.response.data);

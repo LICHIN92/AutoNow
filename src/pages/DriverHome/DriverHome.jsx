@@ -27,12 +27,15 @@ const DriverHome = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [refresh, setRefresh] = useState(false)
+  const [todaysRide, setTodaysRide] = useState(null)
+  const [tommarrow, setTommarrow] = useState(null)
 
+  // todays Bookings
   useEffect(() => {
     const Bookings = async () => {
       // alert()
       try {
-        const res = await axios.get(`${api_url}/driver/NoOfBook`, {
+        const res = await axios.get(`${api_url}/driver/toadysMyRide`, {
           params: { stand },
           headers: {
             Authorization: `Bearer ${token}`
@@ -49,24 +52,6 @@ const DriverHome = () => {
     Bookings()
   }, [openBook, refresh])
 
-  useEffect(() => {
-    const getBook = async () => {
-      try {
-        const res = await axios.get(`${api_url}/driver/getbook`, {
-          params: { stand },
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        })
-        // console.log(res.data);
-
-      } catch (error) {
-        console.log(error.response.data);
-        alert(error.response.data)
-      }
-    }
-    getBook()
-  }, [openBook, refresh])
 
   useEffect(() => {
     const myride = async () => {
@@ -84,6 +69,7 @@ const DriverHome = () => {
     }
     myride()
   }, [openBook, refresh])
+
   const getRemainingHours = (time) => {
     let [hour, minute] = time.split(':').map(Number);
 
@@ -104,24 +90,50 @@ const DriverHome = () => {
     dispatch(clearDriverData(driver))
     navigate('/driverLogin')
   }
-  const todayride = async () => {
-    try {
-      const res = await axios.get(`${api_url}/driver/todayBookings`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      console.log(res.data)
-      setdata(res.data)
-      setOpenBook(true)
-    } catch (error) {
-      console.log(error);
 
+  useEffect(() => {
+    const todayride = async () => {
+      try {
+        const res = await axios.get(`${api_url}/driver/todayBookings`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        console.log(res.data)
+        setdata(res.data)
+        setOpenBook(true)
+      } catch (error) {
+        console.log(error);
+
+      }
     }
-  }
+    todayride()
+  }, [openBook, refresh])
+
+  // tommarrow
+  useEffect(() => {
+    const getBook = async () => {
+      try {
+        const res = await axios.get(`${api_url}/driver/tommarrow`, {
+          params: { stand },
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        setTommarrow(res.data)
+
+      } catch (error) {
+        console.log(error.response.data);
+        alert(error.response.data)
+      }
+    }
+    getBook()
+  }, [openBook, refresh])
+
   return (
     <div className='driverHome d-flex flex-lg-row flex-column  '>
       {view && <DriverViewBook id={id} close={setView} refresh={setRefresh} />}
+      
       {openImg && <AddProfile close={setOpenImg} />}
 
 
@@ -161,25 +173,24 @@ const DriverHome = () => {
         <div className='driverMenu'>
           <div className='Driver_card'
             onClick={() => { navigate('/viewAcceptedRide', { state: { ride: ride } }) }}>
-            Rides: <span>{ride.length}</span>
+            Accepted Rides <span className='ms-1'>{ride.length}</span>
           </div>
           <div className='Driver_card '>
-            Bookings:
-            {Book &&
-              <span className=' rounded-circle'>{Book}</span>
-            }
-          </div>
-          <div className='Driver_card ' onClick={() => { todayride() }}>
-            Today <span>{openBook && data.length}</span>
-          </div>
-          <div className='Driver_card ' onClick={() => {
+            Todays My Ride
 
-          }}>
+            <span className=' rounded-circle ms-1'>{Book}</span>
+
+          </div>
+          <div className='Driver_card ' onClick={() => { setRefresh((prev) => !prev) }}>
+            Today <span className='ms-1'>{data.length}</span>
+          </div>
+          <div className='Driver_card '>
             Tommarrow
+            <span className='ms-1'>{tommarrow}</span>
           </div>
         </div>
         {openBook &&
-          <div className='bookings'>
+          <div className='bookings py-1'>
             {data.map((file, index) => (
               <div key={index} className='rideInfo' onClick={() => viwBook(file._id)}>
                 <p className=''>
@@ -201,7 +212,7 @@ const DriverHome = () => {
             ))}
           </div>}
       </div>
-      {/* </div> */}
+      
     </div>
   )
 }

@@ -84,6 +84,7 @@ const ViewDriver = () => {
                 <Allert
                     msg={`Delete Driver`}
                     msg2={msg}
+                    fill={'green'}
                 />
             }
             {

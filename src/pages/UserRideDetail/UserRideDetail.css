@@ -124,6 +124,17 @@
     color: gold;
     /* background-color: gold; */
 }
+
+.driverInfoBox .imageIcon {
+    width: 20px;
+    /* height: 15px; */
+    /* background: #f5d2d2; */
+    
+}
+.imageIcon img{
+    height: 100%;
+    width: 100%;
+}
 @media(max-width:992px) {
 
     .RideInfo,

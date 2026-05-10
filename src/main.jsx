@@ -30,6 +30,9 @@ import UserRideDetail from './pages/UserRideDetail/UserRideDetail.jsx';
 import StationView from './pages/StationView/StationView.jsx';
 import StationBookView from './pages/StationBookView/StationBookView.jsx';
 import Stations from './pages/StationS/Stations.jsx';
+import Revenue from './pages/Revenue/Revenue.jsx';
+import DriverPending from './pages/DriverPending/DriverPending.jsx';
+import Verifying from './pages/Verify/Verifying.jsx';
 
 const router = createBrowserRouter([
   {
@@ -76,8 +79,12 @@ const router = createBrowserRouter([
         )
       },
       {
-        path: '/p',
-        element: <AddProfile />
+        path: '/Revenue',
+        element:(
+          <AdminAuth>
+            <Revenue/>
+          </AdminAuth>
+        )
       },
       {
         path: '/userDashBoard',
@@ -110,6 +117,22 @@ const router = createBrowserRouter([
       {
         path:'/stations',
         element:<Stations/>
+      },
+      {
+        path:"/pendingDriver",
+        element:(
+          <AdminAuth>
+            <DriverPending/>
+          </AdminAuth>
+        )
+      },
+      {
+        path:"/verify",
+        element:(
+          <AdminAuth>
+            <Verifying/>
+          </AdminAuth>
+        )
       }
     ]
   }
