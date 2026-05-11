@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './drivermodal.css'
 import { FaArrowRight } from 'react-icons/fa'
+import { Button } from 'react-bootstrap';
 const DriverConfirmModal = ({ msg_head, close, fun, msg, data, refresh }) => {
   const getRemainingHours = (time) => {
     if (!time) return
@@ -13,6 +14,7 @@ const DriverConfirmModal = ({ msg_head, close, fun, msg, data, refresh }) => {
 
     return `${hour}:${minute.toString().padStart(2, '0')} ${period}`;
   };
+  const [clicked, setClicked] = useState(false)
   return (
     <div className='drivermodal'>
 
@@ -20,11 +22,18 @@ const DriverConfirmModal = ({ msg_head, close, fun, msg, data, refresh }) => {
         <h2>{msg_head}</h2>
         <hr />
         <p className='text-capitalize fw-semibold'>{data.pickup} <FaArrowRight /> {data.drop}</p>
-      <span className='bg-danger-subtle fw-semibold  px-2 py-1'>{getRemainingHours(data.time)}</span>
+        <span className='bg-danger-subtle fw-semibold  px-2 py-1'>{getRemainingHours(data.time)}</span>
         <p className='mt-1'>{msg}</p>
         <div>
           <button onClick={() => { close(false) }}>Cancel</button>
-          <button onClick={() => { fun() }}>yes</button>
+          {clicked ?
+            <Button className='d-flex align-items-center gap-2' style={{ backgroundColor: 'darkred', color: "white", border: 'none' }}>
+              wait
+              <div class="spinner-border" role="status">
+              </div>
+            </Button>
+            :
+            <button onClick={() => {setClicked(true), fun() }}>yes</button>}
         </div>
       </div>
     </div>

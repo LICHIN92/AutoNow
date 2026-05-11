@@ -11,6 +11,8 @@ import { useSelector } from 'react-redux'
 import { IoMdTimer } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 import Allert from '../../Components/Alert/Allert'
+import { Button } from 'react-bootstrap'
+import auto from '../../assets/image/auto-removebg-preview.png'
 const BookRide = () => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedTime, setSelectedTime] = useState(null);
@@ -23,6 +25,7 @@ const BookRide = () => {
     const [selectedStand, setSelectedStand] = useState("");
     const [openalert, Setopenalert] = useState(false)
     const [msg, setmsg] = useState('')
+    const [clicked, setClicked] = useState(false)
     // console.log(user);
     const navigate = useNavigate()
     const Opencalender = () => {
@@ -106,6 +109,7 @@ const BookRide = () => {
             data.nearStand = selectedStand
 
         try {
+            setClicked(true)
             const res = await axios.post(`${api_url}/ride`, data)
             alert(res.data)
             navigate('/userDashBoard')
@@ -120,13 +124,14 @@ const BookRide = () => {
     return (
         <div className=' RideBooking container-fluid'>
 
-
-
             <div className='row'>
 
                 <div className='col-lg-6 py-4 bg-success d-flex flex-column justify-content-center align-items-center'>
-                    <h1>Book Ride</h1>
+                    <div className='d-flex align-items-center'>
+                        <img  src={auto} alt="" />
+                        <h1 className='text-white'>Book Ride</h1>
 
+                    </div>
                     <form className='col-lg-6' onSubmit={handleSubmit(RideBook)}>
                         <Input label={'Pick-up Location'} name={'pickup'}
                             register={register}
@@ -220,9 +225,16 @@ const BookRide = () => {
                                 </div>
                             </div>}
 
-                        <div className='btn_box mb-2'>
-                            <Buttunn value={'Book'} type={'submit'} bgcolor={'black'} />
-
+                        <div className='btn_box  mb-2'>
+                            {!clicked ?
+                                <Buttunn value={'Book'} type={'submit'} bgcolor={'black'} />
+                                : <Button className='d-flex align-items-center gap-2' style={{ backgroundColor: 'black', color: "white", border: 'none' }}>
+                                    <span>
+                                        Wait
+                                    </span>
+                                    <div class="spinner-border" role="status">
+                                    </div>
+                                </Button>}
                         </div>
                     </form>
                 </div>
