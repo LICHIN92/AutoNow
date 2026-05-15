@@ -10,6 +10,7 @@ import { MdDirectionsCar } from 'react-icons/md'
 import { CiStar } from 'react-icons/ci'
 import { FaRegStar } from 'react-icons/fa'
 import auto from '../../assets/image/auto-rickshaw-svgrepo-com.svg'
+import RouteMap from '../../Components/Routes/RouteMap'
 
 const UserRideDetail = () => {
     const { id } = useParams()
@@ -152,7 +153,7 @@ const UserRideDetail = () => {
                                     <div className='gap-2 d-flex align-items-center justify-content-start b'>
                                         {/* <MdDirectionsCar /> */}
                                         <div className='imageIcon '>
-                                            <img  src={auto}  alt="Auto" />
+                                            <img src={auto} alt="Auto" />
 
                                         </div>
                                         <span className=' text-uppercase'>{data.driverId?.vehicleNumber}</span>
@@ -171,6 +172,15 @@ const UserRideDetail = () => {
 
                 </div>
             )}
+
+            <div style={{width:'100vw',padding:"0"}}>
+                {data && (
+                    <RouteMap
+                        pickup={data.pickup}
+                        drop={data.drop}
+                    />
+                )}
+            </div>
         </div>
     )
 }

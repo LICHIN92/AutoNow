@@ -7,6 +7,8 @@ import { FaMobile } from 'react-icons/fa6'
 import { PiBuildingsDuotone, PiKeyboard } from 'react-icons/pi'
 import axios from 'axios'
 import Allert from '../../Components/Alert/Allert'
+import { CiEdit } from 'react-icons/ci'
+import Edits from '../../Components/Edit/Edits'
 const Verifying = () => {
     const location = useLocation()
     const file = location.state?.file
@@ -15,6 +17,7 @@ const Verifying = () => {
     const token = localStorage.getItem('autoNowToken')
     const [isClicked, SetisClicked] = useState(false)
     const [openAlert, SetOpenAlert] = useState(false)
+    const [edit, setEdit] = useState(false)
 
     useEffect(() => {
         if (!file) {
@@ -45,6 +48,11 @@ const Verifying = () => {
     }
     return (
         <div className='Verifying'>
+
+            {
+                edit && <Edits data={file} close={setEdit} />
+}
+
             {
                 openAlert &&
                 <Allert fill={'green'}
@@ -89,6 +97,9 @@ const Verifying = () => {
                         </div>
                     </div>
                 </div>
+
+                <CiEdit className='edits' onClick={()=>{setEdit(true)}} />
+
                 <div className='buttonBox d-flex gap-3 w-100 justify-content-center'>
                     <span onClick={() => navigate('/pendingDriver')}>
                         Cancel

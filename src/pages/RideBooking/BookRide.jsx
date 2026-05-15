@@ -111,11 +111,13 @@ const BookRide = () => {
         try {
             setClicked(true)
             const res = await axios.post(`${api_url}/ride`, data)
+            Setopenalert(true)
             alert(res.data)
             navigate('/userDashBoard')
 
         } catch (error) {
             console.log(error);
+            setClicked(false)
             alert(error.response.data)
             // navigate('/userDashBoard')
 
@@ -124,11 +126,13 @@ const BookRide = () => {
     return (
         <div className=' RideBooking container-fluid'>
 
+
+
             <div className='row'>
 
                 <div className='col-lg-6 py-4 bg-success d-flex flex-column justify-content-center align-items-center'>
                     <div className='d-flex align-items-center'>
-                        <img  src={auto} alt="" />
+                        <img src={auto} alt="" />
                         <h1 className='text-white'>Book Ride</h1>
 
                     </div>

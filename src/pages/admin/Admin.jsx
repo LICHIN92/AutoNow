@@ -170,7 +170,7 @@ const Admin = () => {
 
                             </div>
                         </div>
-                        <div className="card" onClick={() => { users() }}>
+                        <div className="card" onClick={() => { navigate('/users') }}>
                             <div className="NameAndInfo">
                                 <small>Users</small>
                                 <div>

@@ -1,0 +1,68 @@
+.Edits {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 1;
+    background-color: rgb(0, 0, 0, .8);
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer {
+    width: 350px;
+    background-color: brown;
+    padding-block: 5px;
+    border-radius: 15px;
+}
+
+.formContainer h4 {
+    color: white;
+    text-align: center;
+}
+
+.Edits form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-inline: 10px;
+}
+
+.Edits form div{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 100%;
+}
+.Edits small{
+    color: yellowgreen;
+}
+.Edits input {
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    padding-left: 5px;
+}
+.Edits button{
+    width: 100px;
+}
+.Edits button{
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    color: white;
+}
+.Edits button:first-child{
+    background-color: rgb(104, 104, 4);
+}
+.Edits button:last-child{
+    background-color: rgb(89, 53, 105);
+}
+
+@media(max-width:380px){
+    .formContainer{
+        width: 96vw;
+    }
+}

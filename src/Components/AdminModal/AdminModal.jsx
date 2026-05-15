@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './AdminModal.css'
 import { RiDeleteBinLine } from 'react-icons/ri'
-const AdminModal = ({ close, fun, h4, p1, p2,par }) => {
+import { Button } from 'react-bootstrap'
+const AdminModal = ({ close, fun, h4, p1, p2, par }) => {
+    const [clicked, setClicked] = useState(false)
     return (
         <div className='AdminModal'>
             <div className='AdminModalBox ' >
@@ -19,7 +21,15 @@ const AdminModal = ({ close, fun, h4, p1, p2,par }) => {
 
                 <div className='w-100 buttonBox'>
                     <span onClick={() => { close(false) }}>Cancel</span>
-                    <span onClick={() => {fun() }}>Yes</span>
+                    {clicked ?
+                        <Button className='d-flex wait justify-content-center align-items-center gap-2'
+                            style={{ backgroundColor: 'darkred', color: "white", border: 'none' }}>
+                            wait
+                            <div class="spinner-border" role="status">
+                            </div>
+                        </Button>
+                        :
+                        <span onClick={() => { setClicked(true), fun() }}>Yes</span>}
 
                 </div>
             </div>

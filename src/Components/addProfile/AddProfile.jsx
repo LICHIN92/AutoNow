@@ -21,6 +21,7 @@ const AddProfile = ({ close }) => {
   const driver = useSelector((state) => state.driver?.driver)
   const [alertsbox, setAlertsbox] = useState(false)
   const [msg, setmsg] = useState('')
+  const [clicked, setclicked] = useState(false)
   const dispatch = useDispatch()
   useEffect(() => {
     const getstand = async () => {
@@ -56,9 +57,9 @@ const AddProfile = ({ close }) => {
   const submit = async (data) => {
     data.stand = selectedStand,
       // console.log(data);
-    data.pic = file
+      data.pic = file
     const formData = new FormData()
-    if(!file){
+    if (!file) {
       return alert('please select  image')
     }
     if (!selectedStand) {
@@ -123,7 +124,13 @@ const AddProfile = ({ close }) => {
           </div>
 
           <div className='d-flex flex-column gap-2'>
-            <Buttunn value={'add profile'} />
+            {clicked ?
+              <Button className='d-flex align-items-center whenClick gap-2' style={{backgroundColor: 'darkred',color: "white", border: 'none', }}>
+                wait
+                <div class="spinner-border" role="status">
+                </div>
+              </Button>
+              : <Buttunn value={'add profile'} />}
             <button style={{ height: "30px", borderRadius: "5px" }} className='border-0 bg-danger text-white' onClick={() => { close(false) }}>
               Cancel
             </button>

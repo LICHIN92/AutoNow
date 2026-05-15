@@ -12,6 +12,10 @@
     padding-top: 5px;
 }
 
+.formDiv .whenClick{
+    cursor: not-allowed;
+    
+}
 .register_login {
     margin-top: 30px;
     width: 100%;

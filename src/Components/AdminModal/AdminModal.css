@@ -79,3 +79,9 @@
     background-color: #573C9F;
     color: wheat;
 }
+.AdminModal .buttonBox .wait{
+    background-color: #573C9F !important;
+    color: wheat;
+     width: 100px;
+    height: 30px;
+}

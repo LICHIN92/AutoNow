@@ -33,7 +33,9 @@ import Stations from './pages/StationS/Stations.jsx';
 import Revenue from './pages/Revenue/Revenue.jsx';
 import DriverPending from './pages/DriverPending/DriverPending.jsx';
 import Verifying from './pages/Verify/Verifying.jsx';
-
+import RouteMap from './Components/Routes/RouteMap.jsx';
+import "leaflet/dist/leaflet.css";
+import ViewUsers from './pages/ViewUsers/ViewUsers.jsx';
 const router = createBrowserRouter([
   {
     element: <MainPage />,
@@ -80,9 +82,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/Revenue',
-        element:(
+        element: (
           <AdminAuth>
-            <Revenue/>
+            <Revenue />
           </AdminAuth>
         )
       },
@@ -111,29 +113,42 @@ const router = createBrowserRouter([
         element: <StationView />
       },
       {
-        path:'/todaystation/:station',
-        element:<StationBookView/>
+        path: '/todaystation/:station',
+        element: <StationBookView />
       },
       {
-        path:'/stations',
-        element:<Stations/>
+        path: '/stations',
+        element: <Stations />
       },
       {
-        path:"/pendingDriver",
-        element:(
+        path: "/pendingDriver",
+        element: (
           <AdminAuth>
-            <DriverPending/>
+            <DriverPending />
           </AdminAuth>
         )
       },
       {
-        path:"/verify",
-        element:(
+        path: "/verify",
+        element: (
           <AdminAuth>
-            <Verifying/>
+            <Verifying />
+          </AdminAuth>
+        )
+      },
+      {
+        path: '/users',
+        element: (
+          <AdminAuth>
+            <ViewUsers />
           </AdminAuth>
         )
       }
+      // {
+      //   path:'/routes',
+      //   element:<RouteMap/>
+      // }
+
     ]
   }
 ])

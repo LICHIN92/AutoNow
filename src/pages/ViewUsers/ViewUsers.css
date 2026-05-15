@@ -1,0 +1,53 @@
+.ViewUsers {
+    padding-top: 80px;
+    padding-left: 6px;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+
+.ViewUsers .searchBox {
+    width: 290px;
+    height: 40px;
+    background-color: rgb(17, 112, 112);
+    padding-inline: 3px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    /* gap: 2px; */
+}
+
+.ViewUsers input {
+    border: none;
+    outline: none;
+    padding-left: 2px;
+    height: 90%;
+    width: 80%;
+    border-end-start-radius: 5px;
+    border-start-start-radius:5px ;
+
+}
+.ViewUsers button{
+    border: none;
+    outline: none;
+    height: 90%;
+    width: 25%;
+    border-end-end-radius:5px ;
+    border-start-end-radius:5px ;
+}
+.userBox{
+    width: 300px;
+    background-color: aliceblue;
+    margin-top: 10px;
+    box-shadow: 1px 1px 5px 1px rgb(0, 0, 0,.5);
+    padding: 5px;
+    border-radius: 5px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-block: 10px;
+}
+.userBox span{
+    color: rgb(97, 59, 3);
+    cursor: pointer;
+}

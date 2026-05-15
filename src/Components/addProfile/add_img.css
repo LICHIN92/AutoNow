@@ -8,6 +8,10 @@
 z-index: 1;
 }
 
+.whenClick{
+    cursor: not-allowed;
+}
+
 .add_img .form_div{
     width: 400px;
     height: 400px;

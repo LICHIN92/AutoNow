@@ -11,6 +11,16 @@
     border-radius: 10px;
     width: 580px;
     height: 400px;
+    position: relative;
+}
+
+.edits {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    /* fill: yellow; */
+    font-size: 1.3rem;
+cursor: pointer;
 }
 
 .Verifying .main_Box .mainBox {
@@ -40,10 +50,12 @@
     align-items: center;
     color: rgba(66, 37, 4, 0.808);
 }
-.Verifying .main_Box .mainBox .box div span{
-color: wheat;
-text-transform: capitalize;
+
+.Verifying .main_Box .mainBox .box div span {
+    color: wheat;
+    text-transform: capitalize;
 }
+
 .Verifying .main_Box .mainBox .imgBox {
     width: 40%;
     padding: 5px;
@@ -54,12 +66,14 @@ text-transform: capitalize;
     height: 150px;
     border-radius: 10px;
 }
-.spinner-border{
+
+.spinner-border {
     /* size: 10px; */
     height: 12px;
     width: 12px;
     font-size: 5px;
 }
+
 @media(max-width:600px) {
     .Verifying {
         padding-left: 0;
@@ -77,5 +91,13 @@ text-transform: capitalize;
         justify-content: start;
         align-items: start;
         padding-left: 10px;
+    }
+
+    .edits {
+        position: absolute;
+        top: 15px;
+        left: 88dvw;
+        fill: rgb(8, 8, 8);
+        font-size: 1.3rem;
     }
 }

@@ -7,6 +7,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import driveRedux from '../../redux/driverReduxfun'
 import { useDispatch } from 'react-redux'
+import { Button } from 'react-bootstrap'
 // import driver from '../../assets/image/ChatGPT Image Mar 25, 2026, 11_37_13 AM.png'
 const Driver = () => {
     const api_Url = import.meta.env.VITE_API_URL
@@ -14,9 +15,14 @@ const Driver = () => {
     const [login, setlogin] = useState(true)
     const navigate = useNavigate()
     const dispatch = useDispatch()
-
+    const [clicked, setclicked] = useState(false)
     const registerSubmit = async (data) => {
+        if (data.Password != data.confirmPassword) {
+            return alert('Confirm password does not match')
+        }
         try {
+            setclicked(true)
+
             const res = await axios.post(`${api_Url}/driver`, data)
             console.log(res.data);
             setlogin(true)
@@ -33,6 +39,7 @@ const Driver = () => {
     }
     const LoginSubmit = async (data) => {
         try {
+            setclicked(true)
             const res = await axios.post(`${api_Url}/driver/login`, data)
             console.log(res.data.token);
             alert(res.data.message)
@@ -66,13 +73,31 @@ const Driver = () => {
                         {
                             !login ?
                                 <>
-                                    <Input name={'Name'} label={'Name'} rules={{ required: 'Name is required' }}
+                                    <Input name={'Name'} label={'Name'} font={'uppercase'} rules={{ required: 'Name is required' }}
                                         type={'text'} register={register} />
-                                    <Input name={'Mobile'} label={'Mobile'} rules={{ required: 'Moile is required' }}
+                                    <Input name={'Mobile'} label={'Mobile'} rules={{
+                                        required: "Mobile is required",
+                                        pattern: {
+                                            value: /^[6-9]\d{9}$/,
+                                            // message: "Enter valid mobile number",
+                                        },
+                                    }}
                                         type={'text'} register={register} />
-                                    <Input name={'vehicleNumber'} rules={{ required: 'Vehicle is required' }}
+                                    <Input
+                                        name={'vehicleNumber'}
+                                        rules={{
+                                            required: 'Vehicle is required',
+                                            pattern: {
+                                                // value: /^KL\s\d{1,2}\s[A-Z]{1,2}\s\d{4}$/,
+                                                message: 'Enter valid Kerala vehicle number'
+                                            }
+                                        }}
                                         label={'Vehicle Number'}
-                                        type={'text'} register={register} />
+                                        font={'uppercase'}
+                                        type={'text'}
+                                        register={register}
+                                        errors={errors}
+                                    />
                                     <Input name={'licenceNumber'} rules={{ required: 'Licence Number is required' }}
                                         label={'Licence Number'}
                                         type={'text'} register={register} />
@@ -93,8 +118,14 @@ const Driver = () => {
                                 </>
                         }
                         <div className="d-flex justify-content-center">
-                            <Buttunn value={login ? 'Login' : 'register'} type={'submit'} />
-
+                            {!clicked ? <Buttunn value={login ? 'Login' : 'register'} type={'submit'} />
+                                :
+                                <Button className='whenClick d-flex align-items-center gap-2' style={{ backgroundColor: '#0B5ED7', color: "white", border: 'none' }}>
+                                    wait
+                                    <div class="spinner-border" role="status">
+                                    </div>
+                                </Button>
+                            }
                         </div>
                     </form>
                 </div>

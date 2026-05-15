@@ -42,6 +42,7 @@ const Signin = () => {
             label="Name"
             type="text"
             name="Name"
+            font={'uppercase'}
             register={register}
             errors={errors}
             rules={{ required: "Name is required" }}
