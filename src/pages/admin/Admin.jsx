@@ -19,12 +19,13 @@ const Admin = () => {
     const [stations, setStation] = useState(null)
     const [bookings, setBookings] = useState(null)
     const [stnd, setstnd] = useState(false)
-    const [revenue,setRevenue]=useState(null)
-    const [pendingDrivers,SetPendingDrivers]=useState(null)
+    const [revenue, setRevenue] = useState(null)
+    const [pendingDrivers, SetPendingDrivers] = useState(null)
+    const [visiters, setvisiters] = useState([])
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-   
+
 
     useEffect(() => {
         const driver = async () => {
@@ -75,7 +76,7 @@ const Admin = () => {
             }
         }
         station()
-    },[])
+    }, [])
 
     useEffect(() => {
         const revenue = async () => {
@@ -88,10 +89,25 @@ const Admin = () => {
             }
         }
         revenue()
-    },[])
+    }, [])
+
+    // visiters
+    useEffect(() => {
+        const visiters = async () => {
+            try {
+                const res = await axios.get(`${api_url}/admin/getVisiters`)
+                setvisiters(res.data)
+            } catch (error) {
+                console.log(error);
+
+            }
+        }
+        visiters()
+    }, [])
+
 
     // pendingDrivers
-     useEffect(() => {
+    useEffect(() => {
         const revenue = async () => {
             try {
                 const res = await axios.get(`${api_url}/admin/pendingDrivers`)
@@ -102,7 +118,7 @@ const Admin = () => {
             }
         }
         revenue()
-    },[])
+    }, [])
 
     const Logout = () => {
         localStorage.removeItem('autoNowToken')
@@ -155,8 +171,8 @@ const Admin = () => {
                 {/* main */}
                 <div className='main d-flex flex-column  ps-2'>
                     <h3 className=''>Admin Control</h3>
-
-                    <div className="cards d-flex justify-content-lg-center pt-3  gap-1 gap-md-3 flex-wrap ">
+<p>Visiters at {visiters.date} = {visiters.count}</p>
+                    <div className="cards d-flex justify-content-lg-center   gap-1 gap-md-3 flex-wrap ">
                         <div className="card" onClick={() => { navigate('/viewDriver') }}>
                             <div className='NameAndInfo' >
                                 <small>Drivers</small>
@@ -166,7 +182,7 @@ const Admin = () => {
                                 </div>
                             </div>
                             <div className=' h-100 w-25 d-flex  align-items-center'>
-                                <MdOutlineVerified  size={25} className='symbol' />
+                                <MdOutlineVerified size={25} className='symbol' />
 
                             </div>
                         </div>
@@ -219,7 +235,7 @@ const Admin = () => {
                                 <GiReceiveMoney size={25} className='symbol' />
                             </div>
                         </div>
-                          <div className="card" onClick={() => { navigate('/pendingDriver') }}>
+                        <div className="card" onClick={() => { navigate('/pendingDriver') }}>
                             <div className="NameAndInfo">
                                 <small>Pending Drivers</small>
                                 <div>
@@ -227,7 +243,7 @@ const Admin = () => {
                                 </div>
                             </div>
                             <div className=' h-100 w-25 d-flex  align-items-center'>
-                                <RiPassPendingLine  size={25} className='symbol'  />
+                                <RiPassPendingLine size={25} className='symbol' />
 
                             </div>
                         </div>
