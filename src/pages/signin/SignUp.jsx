@@ -22,6 +22,7 @@ const SignUp = () => {
         }
     }, [user])
     const signupfun = async (data) => {
+        // alert()
         try {
             const res = await axios.post(`${api_url}/user/signIn`, data)
             console.log(res.data)
@@ -35,7 +36,7 @@ const SignUp = () => {
 
         } catch (error) {
             console.log(error)
-            // alert(error.response.data)
+            alert(error.response.data)
         }
     }
     return (

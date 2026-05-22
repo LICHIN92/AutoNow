@@ -1,6 +1,12 @@
 .RideBooking {
     padding-top: 90px;
     width: 100vw;
+    height: 100vh;
+    /* color: #3f4347; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .RideBooking form .btn_box {
@@ -9,10 +15,12 @@
     display: flex;
     justify-content: center;
 }
-.RideBooking img{
+
+.RideBooking img {
     width: 55px;
     height: 44px;
 }
+
 .btn_box:first-child {
     width: 100%;
 }
@@ -142,21 +150,56 @@
 }
 
 .RideBooking .dateTime {
-    height:40px;
+    height: 40px;
     /* background-color: #010613; */
     width: 150px;
 }
-.RideBooking select, option{
+
+.RideBooking select,
+option {
     width: 200px;
     height: 35px;
     text-transform: capitalize;
 }
-option,select{
+
+option,
+select {
     cursor: pointer;
 }
-.RideBooking #std .default{
-    color:rgba(226, 24, 24, 0.5) !important;
+
+.RideBooking #std .default {
+    color: rgba(226, 24, 24, 0.5) !important;
     cursor: not-allowed;
     display: none;
     font-style: italic;
+}
+
+.bookForm {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    box-shadow: 1px 2px 5px 2px rgb(14, 13, 13, .2);
+    width: 500px;
+    border-radius: 20px;
+    height: 500px;
+    padding-inline: 15px;
+    color: rgb(255, 255, 255);
+}
+
+.bookForm form {
+    width: 80%;
+}
+
+.bookForm input,
+.bookForm select {
+    border-radius: px;
+    /* border: none; */
+    /* outline: 1px solid; */
+}
+
+
+@media(max-width:610px) {
+    .bookForm {
+
+        width: 95vw;
+
+    }
 }

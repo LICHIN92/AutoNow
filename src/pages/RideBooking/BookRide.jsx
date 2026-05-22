@@ -124,19 +124,19 @@ const BookRide = () => {
         }
     }
     return (
-        <div className=' RideBooking container-fluid'>
+        <div className=' RideBooking '>
 
 
 
-            <div className='row'>
+            {/* <div className='row'> */}
 
-                <div className='col-lg-6 py-4 bg-success d-flex flex-column justify-content-center align-items-center'>
-                    <div className='d-flex align-items-center'>
+                <div className='  bookForm  d-flex flex-column justify-content-center align-items-center'>
+                    <div className='mb-3 d-flex align-items-center'>
                         <img src={auto} alt="" />
-                        <h1 className='text-white'>Book Ride</h1>
+                        <h1 className=''>Book Ride</h1>
 
                     </div>
-                    <form className='col-lg-6' onSubmit={handleSubmit(RideBook)}>
+                    <form className='' onSubmit={handleSubmit(RideBook)}>
                         <Input label={'Pick-up Location'} name={'pickup'}
                             register={register}
                             errors={errors}
@@ -231,7 +231,7 @@ const BookRide = () => {
 
                         <div className='btn_box  mb-2'>
                             {!clicked ?
-                                <Buttunn value={'Book'} type={'submit'} bgcolor={'black'} />
+                                <Buttunn value={'Book'} type={'submit'} bgcolor={'green'} />
                                 : <Button className='d-flex align-items-center gap-2' style={{ backgroundColor: 'black', color: "white", border: 'none' }}>
                                     <span>
                                         Wait
@@ -242,11 +242,8 @@ const BookRide = () => {
                         </div>
                     </form>
                 </div>
-                <div className='mapdiv col-lg-6'>
-                    <Map />
-
-                </div>
-            </div>
+               
+            {/* </div> */}
         </div>
     )
 }
