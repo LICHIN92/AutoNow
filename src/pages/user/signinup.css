@@ -1,6 +1,5 @@
-
 .SignINUP {
-    max-width: 100vw ;
+    max-width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -11,25 +10,36 @@
     position: relative;
 
 }
-.SignINUP span{
+
+.SignINUP span {
     cursor: pointer;
     font-style: italic;
-    transition:all .5s ease;
+    transition: all .5s ease;
 }
-.SignINUP span:hover{
-font-size: large;
+
+.SignINUP span:hover {
+    font-size: large;
 }
+
 .SignINUP .switch-text {
     cursor: pointer;
     font-style: italic;
 }
 
 .SignINUP .switch-text:hover {
-  cursor: pointer;
+    cursor: pointer;
     transform: scale(1.1);
     transition: all 0.3s ease;
 }
-.SignINUP .signupClick{
+
+.SignINUP .signupClick {
     position: absolute;
     top: 500px;
+}
+
+@media(max-width:600px) {
+    .SignINUP .signupClick {
+        position: absolute;
+        top: 530px !important;
+    }
 }
