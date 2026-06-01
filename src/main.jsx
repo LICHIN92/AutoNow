@@ -36,6 +36,7 @@ import Verifying from './pages/Verify/Verifying.jsx';
 import RouteMap from './Components/Routes/RouteMap.jsx';
 import "leaflet/dist/leaflet.css";
 import ViewUsers from './pages/ViewUsers/ViewUsers.jsx';
+import ChangeDriverStand from './pages/changeDriverStand/ChangeDriverStand.jsx';
 const router = createBrowserRouter([
   {
     element: <MainPage />,
@@ -143,11 +144,11 @@ const router = createBrowserRouter([
             <ViewUsers />
           </AdminAuth>
         )
+      },
+      {
+        path: '/changeDriverStand',
+        element: <ChangeDriverStand />
       }
-      // {
-      //   path:'/routes',
-      //   element:<RouteMap/>
-      // }
 
     ]
   }

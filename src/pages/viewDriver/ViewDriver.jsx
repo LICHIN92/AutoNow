@@ -4,6 +4,7 @@ import axios from 'axios'
 import Driverdetail from '../driverDetail/Driverdetail'
 import AdminModal from '../../Components/AdminModal/AdminModal'
 import Allert from '../../Components/Alert/Allert'
+import { useNavigate } from 'react-router-dom'
 const ViewDriver = () => {
     const api_url = import.meta.env.VITE_API_URL
     const [drivers, SetDrivers] = useState([])
@@ -16,6 +17,7 @@ const ViewDriver = () => {
     const [id, setid] = useState('')
     const [alert, setalert] = useState(false)
     const [msg, setmsg] = useState(null)
+    const navigate = useNavigate()
 
     useEffect(() => {
         const getDriver = async () => {
@@ -114,12 +116,12 @@ const ViewDriver = () => {
 
             <div className='d-flex flex-column  align-items-center justify-content-center'>
                 {
-                    viewStation &&  stationName &&
-               ( <div className='w-100 ps-2 pt-3'>
-                    <p className=' text-uppercase text-decoration-underline text-start'>
-                        Drivers At  {stationName}
-                    </p>
-                </div>)
+                    viewStation && stationName &&
+                    (<div className='w-100 ps-2 pt-3'>
+                        <p className=' text-uppercase text-decoration-underline text-start'>
+                            Drivers At  {stationName}
+                        </p>
+                    </div>)
                 }
 
                 {drivers.length > 0 && viewStation &&
@@ -145,10 +147,15 @@ const ViewDriver = () => {
                                         <span className=' text-uppercase'>{data.Name}</span>
 
                                     </td>
-                                    <td>
-                                        <span className='dell' onClick={() => { setid(data.vehicleNumber), setDelete(true) }}>
-                                            Delete
-                                        </span>
+                                    <td className=''>
+                                        <div className='d-flex flex-column'>
+                                            <span className='dell' onClick={() => { setid(data.vehicleNumber), setDelete(true) }}>
+                                                Delete
+                                            </span>
+                                            <span style={{ color: "blue" }} onClick={(() => { navigate('/changeDriverStand',{state:{data:data,stand:stationName}}) })} className='dell '>
+                                                Edit
+                                            </span>
+                                        </div>
                                     </td>
                                 </tr>
                             ))}
