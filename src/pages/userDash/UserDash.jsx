@@ -117,8 +117,8 @@ const UserDash = () => {
                 <p className=' text-capitalize fw-bold'>
                     <span className='your'>Your</span> current ride
                 </p>
-                <div className='w-100  d-flex flex-column flex-wrap gap-2'>
-                    <div className='BookIcon' onClick={() => { navigate('/') }}>
+                <div className=' d-flex justify-content-center jus flex-column flex-wrap gap-2'>
+                    <div className={ride.length > 0 ? '' : 'BookIcon'} onClick={() => { navigate('/') }}>
                         <BiAddToQueue size={25} fill='#2563eb' />
                         <small className='ms-1'>Book Now Ride</small>
                     </div>

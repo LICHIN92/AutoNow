@@ -171,7 +171,7 @@ const Admin = () => {
                 {/* main */}
                 <div className='main d-flex flex-column  ps-2'>
                     <h3 className=''>Admin Control</h3>
-<p>Visiters at {visiters.date} = {visiters.count}</p>
+<p>Visiters at {visiters?.date} = {visiters.count}</p>
                     <div className="cards d-flex justify-content-lg-center   gap-1 gap-md-3 flex-wrap ">
                         <div className="card" onClick={() => { navigate('/viewDriver') }}>
                             <div className='NameAndInfo' >

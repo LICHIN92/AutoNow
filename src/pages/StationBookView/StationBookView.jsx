@@ -3,6 +3,27 @@ import './StationBookView.css'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { FaCarAlt, FaMobile, FaMobileAlt, FaUser } from 'react-icons/fa'
+
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+} from "chart.js";
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+);
+import { Line } from "react-chartjs-2";
 const StationBookView = () => {
     const api_Url = import.meta.env.VITE_API_URL
     const { station } = useParams()
@@ -11,6 +32,106 @@ const StationBookView = () => {
     const [driver, setdriver] = useState([])
     const [values, setValues] = useState(null)
     const [pendings, setpendings] = useState([])
+    const [chartdata, setChartData] = useState([])
+
+
+ const hours = Array.from({ length: 25 }, (_, i) => i);
+
+const bookingsByHour = hours.map(hour => {
+    const found = chartdata.find(
+        item => Number(item.hour) === hour
+    );
+
+    return found ? found.bookings : 0;
+});
+
+const data = {
+    labels: hours.map(
+        hour => `${hour.toString().padStart(1, '0')}`
+    ),
+    datasets: [
+        {
+            label: "Bookings",
+            data: bookingsByHour,
+            borderColor: "rgba(54, 162, 235, 1)",
+            backgroundColor: "rgba(54, 162, 235, 0.2)",
+            tension: .1,
+            fill: true,
+            pointRadius: 2,
+            pointHoverRadius: 5,
+            borderWidth: 2
+        }
+    ]
+};
+const arrowPlugin = {
+  id: "arrowPlugin",
+  afterDraw(chart) {
+    const { ctx, scales: { x, y } } = chart;
+
+    ctx.save();
+
+    // X-axis arrow
+    ctx.beginPath();
+    ctx.moveTo(x.right, y.bottom);
+    ctx.lineTo(x.right - 10, y.bottom - 5);
+    ctx.lineTo(x.right - 10, y.bottom + 5);
+    ctx.closePath();
+    ctx.fill();
+
+    // Y-axis arrow
+    ctx.beginPath();
+    ctx.moveTo(x.left, y.top);
+    ctx.lineTo(x.left - 5, y.top + 10);
+    ctx.lineTo(x.left + 5, y.top + 10);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.restore();
+  }
+};
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  arrowPlugin
+);
+const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+        title: {
+            display: true,
+            text: `Bookings Per Hour - ${station}`
+        }
+    },
+    scales: {
+        x: {
+            title: {
+                display: true,
+                text: "Hours →"
+            },
+            ticks: {
+                autoSkip: false
+            }
+        },
+        y: {
+            min: 0,
+            max: 10,
+            ticks: {
+                stepSize: 1
+            },
+            title: {
+                display: true,
+                text: "Bookings"
+            }
+        }
+    }
+};
+
 
     useEffect(() => {
         const fetch = async () => {
@@ -43,6 +164,21 @@ const StationBookView = () => {
         driver()
     }, [station])
 
+    useEffect(() => {
+        const bookperday = async () => {
+            try {
+                const res = await axios.get(`${api_Url}/admin/bookperday`, {
+                    params: { station }
+                })
+                setChartData(res.data)
+                console.log(res.data)
+            } catch (error) {
+                console.log(error)
+
+            }
+        }
+        bookperday()
+    }, [])
     const datenow = () => {
         const d = new Date().toISOString().split("T")[0];
 
@@ -63,6 +199,7 @@ const StationBookView = () => {
 
         }
     }
+
 
     const accepted = async () => {
         // alert("Accepted clicked");
@@ -187,7 +324,7 @@ const StationBookView = () => {
                                             {file?.Mobile}
                                         </span>
                                         <span className='d-flex align-items-center gap-1 text-uppercase'>
-                                            <FaCarAlt/>
+                                            <FaCarAlt />
                                             {file?.vehicleNumber}
                                         </span>
                                     </div>
@@ -198,6 +335,17 @@ const StationBookView = () => {
                     </div>
                 }
             </div>
+
+            <div className="p-3 chartdiv">
+                <h5>Bookings Per Hour</h5>
+
+                {chartdata && chartdata.length > 0 && (
+                    // <Bar data={data} />
+                    <Line data={data} />
+
+                )}
+            </div>
+
         </div>
     )
 }

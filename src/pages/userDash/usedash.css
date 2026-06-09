@@ -74,15 +74,71 @@
     cursor: pointer;
 }
 
-.BookIcon{
-    width: 126px;
-    cursor: pointer;
+.BookIcon {
+    position: relative;
+    width: 136px;
+    height: 30px;
+    border-radius: 8px;
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    overflow: hidden;
 }
-.BookIcon small{
+
+.BookIcon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    padding: 2px;
+    cursor: pointer;
+    background: linear-gradient(90deg,
+            #22c55e,
+            #2563eb,
+            #ff1807,
+            #a5fd02,
+            #3002fd,
+            #c522af,
+            #22c55e);
+    background-size: 300% 300%;
+    animation: borderMove 4s linear infinite;
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+@keyframes borderMove {
+    0% {
+        background-position: 0% 25%;
+    }
+
+    50% {
+        background-position: 25% 50%;
+    }
+
+    75% {
+        background-position: 50% 75%;
+    }
+
+    100% {
+        background-position: 75% 100%;
+    }
+}
+
+.BookIcon small {
     color: #2563eb;
 }
+
+.BookIcon:hover {
+    background-color: rgb(128, 128, 128, .2);
+}
+
 .userdash .rideContainer {
-   width: 100vw;
+    width: 100vw;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -97,18 +153,21 @@
     box-shadow: 1px 1px 5px 2px rgb(104, 102, 102, .1);
     cursor: pointer;
     transition: 5ms all ease-in-out;
-    
+
 }
-.your{
+
+.your {
     text-decoration: underline;
     text-decoration-color: #22c55e;
     text-decoration-thickness: 4px;
     text-underline-offset: 7px;
 }
+
 .rideContainer .info:hover {
-   
+
     box-shadow: 1px 1px 3px 4px rgb(104, 102, 102, .1);
 }
+
 .timeline {
     position: relative;
     padding-left: 30px;
@@ -169,7 +228,7 @@
 .cancel .cancelButton {
     width: 80%;
     text-align: center;
-    border: 1px solid rgb(128, 128, 128,.3);
+    border: 1px solid rgb(128, 128, 128, .3);
     color: rgb(223, 3, 3);
     cursor: pointer;
     display: flex;
@@ -179,19 +238,21 @@
     border-radius: 5px;
     font-weight: 600;
 }
-.accepted .accept{
+
+.accepted .accept {
     border: 1px solid green !important;
     border-radius: 5px;
     color: green;
     font-weight: bold;
 }
+
 @media(max-width:400px) {
     .userdash .rideContainer {
         width: 100vw;
     }
 
     .userHead .userIcon {
-       display: none;
+        display: none;
     }
 
     /* .userIcon .user {
