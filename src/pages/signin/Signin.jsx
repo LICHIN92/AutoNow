@@ -18,7 +18,7 @@ const Signin = () => {
     // alert(VITE_API_URL)
     try {
       const res = await axios.post(`${api_url}/user`, data)
-      console.log(res.data.message)
+      // console.log(res.data.message)
       alert(res.data.message)
       localStorage.setItem('autoNowToken', res.data.token)
 

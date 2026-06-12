@@ -5,7 +5,7 @@ import { setUserData } from "./useSlice";
 const reducfunction = (token, dispatch) => {
 
     const user = jwtDecode(token)
-    console.log(user);
+    // console.log(user);
 
     dispatch(setUserData(user))
 

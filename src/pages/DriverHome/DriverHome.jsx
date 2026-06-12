@@ -42,7 +42,7 @@ const DriverHome = () => {
           }
         })
         setBookings(res.data)
-        console.log(res.data);
+        // console.log(res.data);
 
       } catch (error) {
         console.log(error.response.data);
@@ -99,7 +99,7 @@ const DriverHome = () => {
             Authorization: `Bearer ${token}`
           }
         })
-        console.log(res.data)
+        // console.log(res.data)
         setdata(res.data)
         setOpenBook(true)
       } catch (error) {

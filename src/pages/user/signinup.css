@@ -34,7 +34,10 @@
 
 .SignINUP .signupClick {
     position: absolute;
-    top: 500px;
+    top: 510px;
+}
+.SignINUP .signupClick:hover {
+   color: rgb(4, 4, 248);
 }
 
 @media(max-width:600px) {

@@ -16,7 +16,7 @@ const AddProfile = ({ close }) => {
   const [selectedStand, setSelectedStand] = useState('')
   const api_Url = import.meta.env.VITE_API_URL
   const id = useSelector((state) => state.driver.driver.id)
-  console.log(id);
+  // console.log(id);
   const token = localStorage.getItem('sarathi')
   const driver = useSelector((state) => state.driver?.driver)
   const [alertsbox, setAlertsbox] = useState(false)
@@ -27,10 +27,10 @@ const AddProfile = ({ close }) => {
     const getstand = async () => {
       try {
         const res = await axios.get(`${api_Url}/ride/getStand`)
-        console.log(res.data);
+        // console.log(res.data);
         setStands(res.data)
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     }
     getstand()
@@ -84,7 +84,7 @@ const AddProfile = ({ close }) => {
         close(false)
       }, 3000);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       alert(error)
 
     }

@@ -7,6 +7,7 @@ import { data, useNavigate } from 'react-router-dom'
 import reducfunction from '../../redux/reduxfun'
 import { useDispatch, useSelector } from 'react-redux'
 import auto from '../../assets/image/auto.png'
+import './Signup.css'
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm()
     // const api_url = import.meta.env.VITE_API_URL
@@ -25,7 +26,7 @@ const SignUp = () => {
         // alert()
         try {
             const res = await axios.post(`${api_url}/user/signIn`, data)
-            console.log(res.data)
+            // console.log(res.data)
             alert(res.data.message)
             localStorage.setItem('autoNowToken', res.data.token)
             reducfunction(res.data.token, dispatch)
@@ -70,6 +71,8 @@ const SignUp = () => {
                     </div>
                 </form>
             </div>
+                <p onClick={()=>{navigate('/forgotpassword')}} className='text-center pt-2'>Forgot Password?</p>
+
         </div>
     )
 }

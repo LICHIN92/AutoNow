@@ -9,9 +9,9 @@ const Navvbar = () => {
   const [open, setOpen] = useState(false)
   const token = localStorage.getItem('autoNowToken')
   const user = useSelector((state) => state.user?.user)
-  console.log(user);
+  // console.log(user);
   const driver = useSelector((state) => state.driver?.driver)
-  console.log(driver);
+  // console.log(driver);
 
   const navigate = useNavigate()
   useEffect(() => {

@@ -80,7 +80,7 @@ const RouteMap = ({ pickup, drop }) => {
                 setRoute(coordinates);
 
             } catch (err) {
-                console.log(err);
+                // console.log(err);
             }
         };
 

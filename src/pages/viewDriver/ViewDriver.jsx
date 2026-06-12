@@ -39,7 +39,7 @@ const ViewDriver = () => {
                 const res = await axios.get(`${api_url}/admin/DriverAtStation`)
                 setDriversAtStation(res.data)
                 setViewStation(false)
-                console.log(res.data)
+                // console.log(res.data)
             } catch (error) {
                 console.log(error)
                 alert(error)

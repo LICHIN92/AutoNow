@@ -9,9 +9,9 @@ let driver = null;
 if (token) {
   try {
     driver = jwtDecode(token);
-    console.log(driver)
+    // console.log(driver)
   } catch (error) {
-    console.log("Invalid token");
+    // console.log("Invalid token");
     localStorage.removeItem("sarathi");
   }
 }

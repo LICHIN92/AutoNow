@@ -24,7 +24,7 @@ const Driver = () => {
             setclicked(true)
 
             const res = await axios.post(`${api_Url}/driver`, data)
-            console.log(res.data);
+            // console.log(res.data);
             setlogin(true)
             reset()
             alert(res.data)
@@ -41,7 +41,7 @@ const Driver = () => {
         try {
             setclicked(true)
             const res = await axios.post(`${api_Url}/driver/login`, data)
-            console.log(res.data.token);
+            // console.log(res.data.token);
             alert(res.data.message)
             await localStorage.setItem('sarathi', res.data.token)
             driveRedux(res.data.token, dispatch)

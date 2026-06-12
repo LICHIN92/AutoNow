@@ -9,10 +9,10 @@ let user = null;
 if (token) {
     try {
         user = jwtDecode(token);
-        console.log(user);
+        // console.log(user);
         
     } catch (error) {
-        console.log("Invalid token");
+        // console.log("Invalid token");
         localStorage.removeItem('autoNowToken');
     }
 }

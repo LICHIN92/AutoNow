@@ -155,7 +155,7 @@ const options = {
                     params: { station }
                 })
                 setdriver(res.data)
-                console.log(res.data)
+                // console.log(res.data)
             } catch (error) {
                 console.log(error)
 
@@ -171,7 +171,7 @@ const options = {
                     params: { station }
                 })
                 setChartData(res.data)
-                console.log(res.data)
+                // console.log(res.data)
             } catch (error) {
                 console.log(error)
 

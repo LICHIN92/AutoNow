@@ -16,12 +16,12 @@ const DriverViewBook = ({ id, close, refresh }) => {
                 const getdata = await axios.get(`${api_url}/driver/getDetail`, {
                     params: { id: id } // ✅ correct format
                 })
-                console.log(getdata.data)
+                // console.log(getdata.data)
                 setLoading(true)
                 setData(getdata.data)
                 // close(false)
             } catch (error) {
-                console.log(error);
+                // console.log(error);
 
             }
         }
@@ -63,10 +63,10 @@ const DriverViewBook = ({ id, close, refresh }) => {
                 }
             )
             setDriverModal(false)
-            console.log(res.data)
+            // console.log(res.data)
             refresh((prev) => !prev)
         } catch (error) {
-            console.log(error)
+            // console.log(error)
             alert(error.response.data)
             setDriverModal(false)
             close(false)

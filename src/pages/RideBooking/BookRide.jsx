@@ -40,7 +40,7 @@ const BookRide = () => {
         const getstand = async () => {
             try {
                 const res = await axios.get(`${api_url}/ride/getStand`)
-                console.log(res.data);
+                // console.log(res.data);
                 setStands(res.data)
 
             } catch (error) {

@@ -13,9 +13,9 @@ const Stattion = ({ close }) => {
             const res = await axios.post(`${api_url}/admin`, data)
             alert(res.data)
             close(false)
-            console.log(res.data)
+            // console.log(res.data)
         } catch (error) {
-            console.log(error);
+            // console.log(error);
 
         }
     }

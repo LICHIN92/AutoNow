@@ -37,6 +37,7 @@ import RouteMap from './Components/Routes/RouteMap.jsx';
 import "leaflet/dist/leaflet.css";
 import ViewUsers from './pages/ViewUsers/ViewUsers.jsx';
 import ChangeDriverStand from './pages/changeDriverStand/ChangeDriverStand.jsx';
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword.jsx';
 const router = createBrowserRouter([
   {
     element: <MainPage />,
@@ -148,6 +149,10 @@ const router = createBrowserRouter([
       {
         path: '/changeDriverStand',
         element: <ChangeDriverStand />
+      },
+      {
+        path:'/forgotpassword',
+        element:<ForgotPassword/>
       }
 
     ]
